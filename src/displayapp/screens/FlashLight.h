@@ -17,7 +17,7 @@ namespace Pinetime {
         ~FlashLight() override;
 
         bool OnTouchEvent(Pinetime::Applications::TouchEvents event) override;
-        void Toggle();
+        void OnClickEvent(lv_obj_t* obj, lv_event_t event);
 
       private:
         void SetIndicators();
@@ -26,7 +26,7 @@ namespace Pinetime {
         Pinetime::System::SystemTask& systemTask;
         Controllers::BrightnessController& brightnessController;
 
-        Controllers::BrightnessController::Levels brightnessLevel = Controllers::BrightnessController::Levels::High;
+        Controllers::BrightnessController::Levels brightnessLevel;
 
         lv_obj_t* flashLight;
         lv_obj_t* backgroundAction;
