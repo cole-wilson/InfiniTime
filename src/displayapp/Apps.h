@@ -38,7 +38,12 @@ namespace Pinetime {
       SettingSetTime,
       SettingChimes,
       SettingShakeThreshold,
+<<<<<<< HEAD
       SettingBluetooth,
+=======
+      SettingAirplaneMode,
+      Calculator,
+>>>>>>> 6ff0f94385ffe28e3abce43e335d0f793f4358c9
       Error
     };
   }
