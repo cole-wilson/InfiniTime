@@ -13,7 +13,7 @@ Calendar::Calendar(DisplayApp* app, Pinetime::Controllers::Battery& batteryContr
     lv_label_set_align(label_time, LV_LABEL_ALIGN_CENTER);
     lv_obj_align(label_time, lv_scr_act(), LV_ALIGN_IN_TOP_LEFT, 0, 0);
     batteryIcon = lv_label_create(lv_scr_act(), nullptr);
-    lv_label_set_text(batteryIcon, BatteryIcon::GetBatteryIcon(batteryController.PercentRemaining()));
+    /* lv_label_set_text(batteryIcon, BatteryIcon::GetBatteryIcon(batteryController.PercentRemaining())); */
     lv_obj_align(batteryIcon, nullptr, LV_ALIGN_IN_TOP_RIGHT, 0, 0);
 
     // Create calendar object
