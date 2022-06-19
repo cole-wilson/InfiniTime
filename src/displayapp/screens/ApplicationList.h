@@ -31,10 +31,10 @@ namespace Pinetime {
         Pinetime::Controllers::Battery& batteryController;
         Controllers::DateTime& dateTimeController;
 
-        static constexpr int appsPerScreen = 6;
+        static constexpr int appsPerScreen = 4;
 
         // Increment this when more space is needed
-        static constexpr int nScreens = 2;
+        static constexpr int nScreens = 4;
 
         static constexpr std::array<Tile::Applications, appsPerScreen * nScreens> applications {{
           {Symbols::stopWatch, Apps::StopWatch},
@@ -49,7 +49,10 @@ namespace Pinetime {
           {"2", Apps::Twos},
           {Symbols::chartLine, Apps::Motion},
           {Symbols::drum, Apps::Metronome},
-          {Symbols::map, Apps::Navigation},
+          {"*", Apps::PassKey},
+          
+          {"W", Apps::Weather},
+          
         }};
         ScreenList<nScreens> screens;
       };
