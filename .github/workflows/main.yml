@@ -29,6 +29,8 @@ jobs:
     #########################################################################################
     # Download and Cache Dependencies
 
+    - name: setup env
+      run: echo ACTIONS_ALLOW_UNSECURE_COMMANDS=1 >> $GITHUB_ENV
     - name: Install cmake
       uses: lukka/get-cmake@v3.18.0
 
