@@ -52,6 +52,7 @@ namespace Pinetime {
           {"*", Apps::PassKey},
           
           {"W", Apps::Weather},
+		  {"+", Apps::Calculator},
           
         }};
         ScreenList<nScreens> screens;
