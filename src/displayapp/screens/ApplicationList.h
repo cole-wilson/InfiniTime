@@ -53,6 +53,7 @@ namespace Pinetime {
           
           {"W", Apps::Weather},
 		  {"+", Apps::Calculator},
+		  {"cal", Apps::Calendar}
           
         }};
         ScreenList<nScreens> screens;

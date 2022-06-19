@@ -19,6 +19,7 @@
 #include "displayapp/screens/StopWatch.h"
 #include "displayapp/screens/Metronome.h"
 #include "displayapp/screens/Music.h"
+#include "displayapp/screens/Calendar.h"
 #include "displayapp/screens/Navigation.h"
 #include "displayapp/screens/Notifications.h"
 #include "displayapp/screens/SystemInfo.h"
@@ -448,6 +449,9 @@ void DisplayApp::LoadApp(Apps app, DisplayApp::FullRefreshDirections direction) 
       break;
     case Apps::Twos:
       currentScreen = std::make_unique<Screens::Twos>(this);
+      break;
+    case Apps::Calendar:
+      currentScreen = std::make_unique<Screens::Calendar>(this, batteryController,dateTimeController);
       break;
     case Apps::Paint:
       currentScreen = std::make_unique<Screens::InfiniPaint>(this, lvgl, motorController);

@@ -37,6 +37,7 @@ bool ApplicationList::OnTouchEvent(Pinetime::Applications::TouchEvents event) {
   return screens.OnTouchEvent(event);
 }
 
+<<<<<<< HEAD
 std::unique_ptr<Screen> ApplicationList::CreateScreen(unsigned int screenNum) const {
   std::array<Tile::Applications, appsPerScreen> apps;
   for (int i = 0; i < appsPerScreen; i++) {
@@ -45,3 +46,38 @@ std::unique_ptr<Screen> ApplicationList::CreateScreen(unsigned int screenNum) co
 
   return std::make_unique<Screens::Tile>(screenNum, nScreens, app, settingsController, batteryController, dateTimeController, apps);
 }
+=======
+std::unique_ptr<Screen> ApplicationList::CreateScreen1() {
+  std::array<Screens::Tile::Applications, 6> applications {{
+    {Symbols::stopWatch, Apps::StopWatch},
+    {Symbols::music, Apps::Music},
+    {Symbols::map, Apps::Navigation},
+    {Symbols::shoe, Apps::Steps},
+    {Symbols::heartBeat, Apps::HeartRate},
+    {Symbols::hourGlass, Apps::Timer},
+  }};
+
+  return std::make_unique<Screens::Tile>(0, 3, app, settingsController, batteryController, dateTimeController, applications);
+}
+
+std::unique_ptr<Screen> ApplicationList::CreateScreen2() {
+  std::array<Screens::Tile::Applications, 6> applications {{
+    {Symbols::paintbrush, Apps::Paint},
+    {Symbols::paddle, Apps::Paddle},
+    {"2", Apps::Twos},
+    {Symbols::chartLine, Apps::Motion},
+    {Symbols::drum, Apps::Metronome},
+    {Symbols::clock, Apps::Alarm},
+  }};
+
+  return std::make_unique<Screens::Tile>(1, 3, app, settingsController, batteryController, dateTimeController, applications);
+}
+
+std::unique_ptr<Screen> ApplicationList::CreateScreen3() {
+  std::array<Screens::Tile::Applications, 6> applications {
+    {{Symbols::calendar, Apps::Calendar}
+  }};
+
+  return std::make_unique<Screens::Tile>(2, 3, app, settingsController, batteryController, dateTimeController, applications);
+}
+>>>>>>> 3a739c62ca6961156e44aefdc182f0fa9f4a2a10
