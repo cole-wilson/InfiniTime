@@ -31,6 +31,7 @@ namespace Pinetime {
         Pinetime::Controllers::Battery& batteryController;
         Controllers::DateTime& dateTimeController;
 
+/* <<<<<<< HEAD */
         static constexpr int appsPerScreen = 6;
 
         // Increment this when more space is needed
@@ -57,6 +58,12 @@ namespace Pinetime {
           
         }};
         ScreenList<nScreens> screens;
+/* ======= */
+/*         ScreenList<3> screens; */
+/*         std::unique_ptr<Screen> CreateScreen1(); */
+/*         std::unique_ptr<Screen> CreateScreen2(); */
+/*         std::unique_ptr<Screen> CreateScreen3(); */
+/* >>>>>>> 3a739c62ca6961156e44aefdc182f0fa9f4a2a10 */
       };
     }
   }

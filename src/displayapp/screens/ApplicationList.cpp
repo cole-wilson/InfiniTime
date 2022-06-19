@@ -80,4 +80,7 @@ std::unique_ptr<Screen> ApplicationList::CreateScreen3() {
 
   return std::make_unique<Screens::Tile>(2, 3, app, settingsController, batteryController, dateTimeController, applications);
 }
+<<<<<<< HEAD
+>>>>>>> 3a739c62ca6961156e44aefdc182f0fa9f4a2a10
+=======
 >>>>>>> 3a739c62ca6961156e44aefdc182f0fa9f4a2a10
