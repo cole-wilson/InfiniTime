@@ -55,7 +55,9 @@ Workout::~Workout() {
 }
 
 void Workout::Refresh() {
-  SetTimeToLabel(txtGlobalTime, dateTimeController.Hours(), dateTimeController.Minutes());
+	int hours = dateTimeController.Hours()%12;
+	if (hours == 0) hours = 12;
+  SetTimeToLabel(txtGlobalTime, hours, dateTimeController.Minutes());
 
   if (settings.workoutInProgress) {
     OnWorkoutTimeUpdated();
