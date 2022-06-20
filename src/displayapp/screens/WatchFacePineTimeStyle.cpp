@@ -427,17 +427,19 @@ void WatchFacePineTimeStyle::Refresh() {
       currentDay = day;
     }
   }
+  lv_gauge_set_value(stepGauge, 0, (time.seconds().count() / 60.0));
+  lv_obj_realign(stepGauge);
+ 
 
-  stepCount = motionController.NbSteps();
-  motionSensorOk = motionController.IsSensorOk();
-  if (stepCount.IsUpdated() || motionSensorOk.IsUpdated()) {
-    lv_gauge_set_value(stepGauge, 0, (stepCount.Get() / (settingsController.GetStepsGoal() / 100)));
-    lv_obj_realign(stepGauge);
-    if (stepCount.Get() > settingsController.GetStepsGoal()) {
-      lv_obj_set_style_local_line_color(stepGauge, LV_GAUGE_PART_MAIN, LV_STATE_DEFAULT, LV_COLOR_WHITE);
-      lv_obj_set_style_local_scale_grad_color(stepGauge, LV_GAUGE_PART_MAIN, LV_STATE_DEFAULT, LV_COLOR_WHITE);
-    }
-  }
+  /* stepCount = motionController.NbSteps(); */
+  /* motionSensorOk = motionController.IsSensorOk(); */
+  /* if (stepCount.IsUpdated() || motionSensorOk.IsUpdated()) { */
+	  /* //... */
+  /*      if (stepCount.Get() > settingsController.GetStepsGoal()) { */
+  /*     lv_obj_set_style_local_line_color(stepGauge, LV_GAUGE_PART_MAIN, LV_STATE_DEFAULT, LV_COLOR_WHITE); */
+  /*     lv_obj_set_style_local_scale_grad_color(stepGauge, LV_GAUGE_PART_MAIN, LV_STATE_DEFAULT, LV_COLOR_WHITE); */
+  /*   } */
+  /* } */
   if (!lv_obj_get_hidden(btnSet)) {
     if ((savedTick > 0) && (lv_tick_get() - savedTick > 3000)) {
       lv_obj_set_hidden(btnSet, true);
