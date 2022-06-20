@@ -31,6 +31,7 @@
 #include "displayapp/screens/Steps.h"
 #include "displayapp/screens/PassKey.h"
 #include "displayapp/screens/Error.h"
+#include "displayapp/screens/Workout.h"
 
 #include "drivers/Cst816s.h"
 #include "drivers/St7789.h"
@@ -76,6 +77,7 @@ DisplayApp::DisplayApp(Drivers::St7789& lcd,
                        Pinetime::Controllers::MotionController& motionController,
                        Pinetime::Controllers::TimerController& timerController,
                        Pinetime::Controllers::AlarmController& alarmController,
+                       Pinetime::Controllers::FS& fs,
                        Pinetime::Controllers::BrightnessController& brightnessController,
                        Pinetime::Controllers::TouchHandler& touchHandler)
   : lcd {lcd},
@@ -92,6 +94,7 @@ DisplayApp::DisplayApp(Drivers::St7789& lcd,
     motionController {motionController},
     timerController {timerController},
     alarmController {alarmController},
+    fs {fs},
     brightnessController {brightnessController},
     touchHandler {touchHandler} {
 }
@@ -186,7 +189,10 @@ void DisplayApp::Refresh() {
       case Messages::TimerDone:
         if (currentApp == Apps::Timer) {
           auto* timer = static_cast<Screens::Timer*>(currentScreen.get());
-          timer->SetDone();
+          timer->setDone();
+        } else if (currentApp == Apps::Workout) {
+          auto* workout = static_cast<Screens::Workout*>(currentScreen.get());
+          workout->OnTimerDone();
         } else {
           LoadApp(Apps::Timer, DisplayApp::FullRefreshDirections::Down);
         }
@@ -480,6 +486,9 @@ void DisplayApp::LoadApp(Apps app, DisplayApp::FullRefreshDirections direction) 
       break;
     case Apps::Calculator:
       currentScreen = std::make_unique<Screens::Calculator>(this, motorController);
+	  break;
+    case Apps::Workout:
+      currentScreen = std::make_unique<Screens::Workout>(this, fs, dateTimeController, timerController, motorController, heartRateController, *systemTask);
       break;
   }
   currentApp = app;
