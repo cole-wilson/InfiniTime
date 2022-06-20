@@ -226,8 +226,11 @@ void DisplayApp::Refresh() {
                 LoadApp(Apps::Notifications, DisplayApp::FullRefreshDirections::Down);
                 break;
               case TouchEvents::SwipeRight:
-                LoadApp(Apps::QuickSettings, DisplayApp::FullRefreshDirections::RightAnim);
+                LoadApp(Apps::QuickSettings, DisplayApp::FullRefreshDirections::Right);
                 break;
+			  case TouchEvents::SwipeLeft:
+				LoadApp(Apps::Calendar, DisplayApp::FullRefreshDirections::Left);
+				break;
               case TouchEvents::DoubleTap:
                 PushMessageToSystemTask(System::Messages::GoToSleep);
                 break;
