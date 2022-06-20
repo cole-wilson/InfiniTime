@@ -44,3 +44,4 @@ std::unique_ptr<Screen> ApplicationList::CreateScreen(unsigned int screenNum) co
 
   return std::make_unique<Screens::Tile>(screenNum, nScreens, app, settingsController, batteryController, dateTimeController, apps);
 }
+
