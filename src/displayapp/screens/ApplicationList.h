@@ -51,12 +51,12 @@ namespace Pinetime {
           {Symbols::drum, Apps::Metronome},
 		  {"+=", Apps::Calculator},
 
-		  {Symbols::calendar, Apps::Calendar},
+		  {Symbols::dice, Apps::Dice},
 		  {"wko", Apps::Workout}
           
         }};
         ScreenList<nScreens> screens;
-      };
+	 };
     }
   }
 }
