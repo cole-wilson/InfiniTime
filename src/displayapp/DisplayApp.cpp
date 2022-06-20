@@ -189,7 +189,7 @@ void DisplayApp::Refresh() {
       case Messages::TimerDone:
         if (currentApp == Apps::Timer) {
           auto* timer = static_cast<Screens::Timer*>(currentScreen.get());
-          timer->setDone();
+          timer->SetDone();
         } else if (currentApp == Apps::Workout) {
           auto* workout = static_cast<Screens::Workout*>(currentScreen.get());
           workout->OnTimerDone();
