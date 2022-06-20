@@ -427,7 +427,7 @@ void WatchFacePineTimeStyle::Refresh() {
       currentDay = day;
     }
   }
-  lv_gauge_set_value(stepGauge, 0, (time.seconds().count() / 60.0));
+  lv_gauge_set_value(stepGauge, 0, (dateTimeController.Seconds() / 60.0));
   lv_obj_realign(stepGauge);
  
 
