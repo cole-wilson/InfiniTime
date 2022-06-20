@@ -51,7 +51,7 @@ namespace Pinetime {
           {Symbols::drum, Apps::Metronome},
 		  {"+=", Apps::Calculator},
 
-		  {"dice", Apps::Dice},
+		  {"dce", Apps::Dice},
 		  {"wko", Apps::Workout}
           
         }};
