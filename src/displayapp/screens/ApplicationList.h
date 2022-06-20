@@ -50,11 +50,11 @@ namespace Pinetime {
           {"2", Apps::Twos},
           {Symbols::chartLine, Apps::Motion},
           {Symbols::drum, Apps::Metronome},
-          {"*", Apps::PassKey},
+          /* {"*", Apps::PassKey}, */
           
-          {"W", Apps::Weather},
-		  {"+", Apps::Calculator},
-		  {"cal", Apps::Calendar}
+          /* {"W", Apps::Weather}, */
+		  {"+=", Apps::Calculator},
+		  {Symbols::calendar, Apps::Calendar}
           
         }};
         ScreenList<nScreens> screens;
