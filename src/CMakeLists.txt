@@ -386,6 +386,7 @@ list(APPEND SOURCE_FILES
         displayapp/screens/Music.cpp
         displayapp/screens/Weather.cpp
         displayapp/screens/Calendar.cpp
+		displayapp/screens/Timeline.cpp
         displayapp/screens/Navigation.cpp
         displayapp/screens/Metronome.cpp
         displayapp/screens/Dice.cpp
@@ -610,6 +611,7 @@ set(INCLUDE_FILES
         displayapp/screens/Metronome.h
         displayapp/screens/Motion.h
         displayapp/screens/Calculator.h
+		displayapp/screens/Timeline.h
         displayapp/screens/Timer.h
         displayapp/screens/Alarm.h
         displayapp/Colors.h

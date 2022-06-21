@@ -17,6 +17,7 @@ namespace Pinetime {
       BatteryInfo,
       Music,
       Calendar,
+	  Timeline,
       Paint,
       Paddle,
       Twos,

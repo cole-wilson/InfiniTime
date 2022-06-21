@@ -21,6 +21,7 @@
 #include "displayapp/screens/Dice.h"
 #include "displayapp/screens/Music.h"
 #include "displayapp/screens/Calendar.h"
+#include "displayapp/screens/Timeline.h"
 #include "displayapp/screens/Navigation.h"
 #include "displayapp/screens/Notifications.h"
 #include "displayapp/screens/SystemInfo.h"
@@ -462,8 +463,12 @@ void DisplayApp::LoadApp(Apps app, DisplayApp::FullRefreshDirections direction) 
       break;
     case Apps::Calendar:
       currentScreen = std::make_unique<Screens::Calendar>(this, batteryController,dateTimeController);
-	ReturnApp(Apps::Clock, FullRefreshDirections::RightAnim, TouchEvents::SwipeRight);
+	  ReturnApp(Apps::Clock, FullRefreshDirections::RightAnim, TouchEvents::SwipeRight);
       break;
+	case Apps::Timeline:
+	  currentScreen = std::make_unique<Screens::Timeline>(this, motorController,dateTimeController);
+	  ReturnApp(Apps::Calendar, FullRefreshDirections::Left, TouchEvents::SwipeRight);
+	  break;
     case Apps::Paint:
       currentScreen = std::make_unique<Screens::InfiniPaint>(this, lvgl, motorController);
       break;

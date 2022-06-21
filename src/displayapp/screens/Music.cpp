@@ -50,6 +50,8 @@ inline void lv_img_set_src_arr(lv_obj_t* img, const lv_img_dsc_t* src_img) {
 Music::Music(Pinetime::Applications::DisplayApp* app, Pinetime::Controllers::MusicService& music) : Screen(app), musicService(music) {
   lv_obj_t* label;
 
+  int button_height = 40;
+
   lv_style_init(&btn_style);
   lv_style_set_radius(&btn_style, LV_STATE_DEFAULT, 20);
   lv_style_set_bg_color(&btn_style, LV_STATE_DEFAULT, LV_COLOR_AQUA);
@@ -58,7 +60,7 @@ Music::Music(Pinetime::Applications::DisplayApp* app, Pinetime::Controllers::Mus
   btnVolDown = lv_btn_create(lv_scr_act(), nullptr);
   btnVolDown->user_data = this;
   lv_obj_set_event_cb(btnVolDown, event_handler);
-  lv_obj_set_size(btnVolDown, 76, 76);
+  lv_obj_set_size(btnVolDown, 76, button_height);
   lv_obj_align(btnVolDown, nullptr, LV_ALIGN_IN_BOTTOM_LEFT, 0, 0);
   lv_obj_add_style(btnVolDown, LV_STATE_DEFAULT, &btn_style);
   label = lv_label_create(btnVolDown, nullptr);
@@ -68,7 +70,7 @@ Music::Music(Pinetime::Applications::DisplayApp* app, Pinetime::Controllers::Mus
   btnVolUp = lv_btn_create(lv_scr_act(), nullptr);
   btnVolUp->user_data = this;
   lv_obj_set_event_cb(btnVolUp, event_handler);
-  lv_obj_set_size(btnVolUp, 76, 76);
+  lv_obj_set_size(btnVolUp, 76, button_height);
   lv_obj_align(btnVolUp, nullptr, LV_ALIGN_IN_BOTTOM_RIGHT, 0, 0);
   lv_obj_add_style(btnVolUp, LV_STATE_DEFAULT, &btn_style);
   label = lv_label_create(btnVolUp, nullptr);
@@ -78,7 +80,7 @@ Music::Music(Pinetime::Applications::DisplayApp* app, Pinetime::Controllers::Mus
   btnPrev = lv_btn_create(lv_scr_act(), nullptr);
   btnPrev->user_data = this;
   lv_obj_set_event_cb(btnPrev, event_handler);
-  lv_obj_set_size(btnPrev, 76, 76);
+  lv_obj_set_size(btnPrev, 76, button_height);
   lv_obj_align(btnPrev, nullptr, LV_ALIGN_IN_BOTTOM_LEFT, 0, 0);
   lv_obj_add_style(btnPrev, LV_STATE_DEFAULT, &btn_style);
   label = lv_label_create(btnPrev, nullptr);
@@ -87,7 +89,7 @@ Music::Music(Pinetime::Applications::DisplayApp* app, Pinetime::Controllers::Mus
   btnNext = lv_btn_create(lv_scr_act(), nullptr);
   btnNext->user_data = this;
   lv_obj_set_event_cb(btnNext, event_handler);
-  lv_obj_set_size(btnNext, 76, 76);
+  lv_obj_set_size(btnNext, 76, button_height);
   lv_obj_align(btnNext, nullptr, LV_ALIGN_IN_BOTTOM_RIGHT, 0, 0);
   lv_obj_add_style(btnNext, LV_STATE_DEFAULT, &btn_style);
   label = lv_label_create(btnNext, nullptr);
@@ -96,7 +98,7 @@ Music::Music(Pinetime::Applications::DisplayApp* app, Pinetime::Controllers::Mus
   btnPlayPause = lv_btn_create(lv_scr_act(), nullptr);
   btnPlayPause->user_data = this;
   lv_obj_set_event_cb(btnPlayPause, event_handler);
-  lv_obj_set_size(btnPlayPause, 76, 76);
+  lv_obj_set_size(btnPlayPause, 76, button_height);
   lv_obj_align(btnPlayPause, nullptr, LV_ALIGN_IN_BOTTOM_MID, 0, 0);
   lv_obj_add_style(btnPlayPause, LV_STATE_DEFAULT, &btn_style);
   txtPlayPause = lv_label_create(btnPlayPause, nullptr);
@@ -130,7 +132,7 @@ Music::Music(Pinetime::Applications::DisplayApp* app, Pinetime::Controllers::Mus
   /** Init animation */
   imgDisc = lv_img_create(lv_scr_act(), nullptr);
   lv_img_set_src_arr(imgDisc, &disc);
-  lv_obj_align(imgDisc, nullptr, LV_ALIGN_IN_TOP_RIGHT, -15, 15);
+  lv_obj_align(imgDisc, nullptr, LV_ALIGN_CENTER, -15, 15);
 
   imgDiscAnim = lv_img_create(lv_scr_act(), nullptr);
   lv_img_set_src_arr(imgDiscAnim, &disc_f_1);

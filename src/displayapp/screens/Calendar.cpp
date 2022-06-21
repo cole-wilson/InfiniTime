@@ -74,6 +74,10 @@ bool Calendar::OnTouchEvent(Pinetime::Applications::TouchEvents event) {
             lv_calendar_set_showed_date(calendar, &current);
             return true;
         }
+		case TouchEvents::SwipeLeft: {
+			app->StartApp(Apps::Timeline, DisplayApp::FullRefreshDirections::Right);
+			return true;
+		}
         default: {
             return false;
         }
