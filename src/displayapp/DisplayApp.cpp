@@ -466,7 +466,7 @@ void DisplayApp::LoadApp(Apps app, DisplayApp::FullRefreshDirections direction) 
 	  ReturnApp(Apps::Clock, FullRefreshDirections::RightAnim, TouchEvents::SwipeRight);
       break;
 	case Apps::Timeline:
-	  currentScreen = std::make_unique<Screens::Timeline>(this, motorController, dateTimeController, -1);
+	  currentScreen = std::make_unique<Screens::Timeline>(this, motorController, dateTimeController);
 	  ReturnApp(Apps::Calendar, FullRefreshDirections::Left, TouchEvents::SwipeRight);
 	  break;
     case Apps::Paint:
