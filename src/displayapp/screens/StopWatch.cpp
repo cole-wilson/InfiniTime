@@ -185,6 +185,9 @@ bool StopWatch::OnButtonPushed() {
   if (currentState == States::Running) {
     Pause();
     return true;
+  } else {
+	Start();
+	return true;
   }
-  return false;
+  /* return false; */
 }
