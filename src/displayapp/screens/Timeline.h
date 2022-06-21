@@ -1,6 +1,8 @@
 #pragma once
 
 #include "displayapp/screens/Screen.h"
+#include "components/motor/MotorController.h"
+#include "components/datetime/DateTimeController.h"
 #include <lvgl/lvgl.h>
 
 namespace Pinetime {
