@@ -117,7 +117,7 @@ Music::Music(Pinetime::Applications::DisplayApp* app, Pinetime::Controllers::Mus
   txtArtist = lv_label_create(lv_scr_act(), nullptr);
   lv_label_set_long_mode(txtArtist, LV_LABEL_LONG_SROLL_CIRC);
   lv_obj_set_style_local_text_color(txtArtist, LV_LABEL_PART_MAIN, LV_STATE_DEFAULT, LV_COLOR_GRAY);
-  lv_obj_align(txtArtist, nullptr, LV_ALIGN_IN_LEFT_MID, 12, MIDDLE_OFFSET + 5 * FONT_HEIGHT);
+  lv_obj_align(txtArtist, nullptr, LV_ALIGN_IN_LEFT_MID, 12, MIDDLE_OFFSET + 6 * FONT_HEIGHT);
   lv_label_set_align(txtArtist, LV_ALIGN_IN_LEFT_MID);
   lv_obj_set_width(txtArtist, LV_HOR_RES - 12);
   lv_label_set_text_static(txtArtist, "Artist Name");
