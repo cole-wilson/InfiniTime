@@ -8,7 +8,7 @@ namespace Pinetime {
     namespace Screens {
       class Timeline : public Screen {
       public:
-        Timeline(DisplayApp* app);
+        Timeline(DisplayApp* app, Controllers::MotorController& motorController, Controllers::DateTime& dateTimeController);
         ~Timeline() override;
       };
     }
