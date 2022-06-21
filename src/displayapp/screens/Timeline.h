@@ -12,6 +12,7 @@ namespace Pinetime {
       class Timeline : public Screen {
       public:
         Timeline(DisplayApp* app, Controllers::MotorController& motorController, Controllers::DateTime& dateTimeController, Controllers::FS& fsController);
+		char* ReadFile();
         ~Timeline() override;
       };
     }
