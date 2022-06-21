@@ -24,6 +24,7 @@ Calendar::Calendar(DisplayApp* app, Pinetime::Controllers::Battery& batteryContr
     lv_obj_align(calendar, NULL, LV_ALIGN_IN_BOTTOM_MID, 0, -5);
     // Disable clicks
     lv_obj_set_click(calendar, false);
+//     lv_obj_set_event_cb(calendar, event_handler);
 
     // Set background of today's date
     lv_obj_set_style_local_bg_opa(calendar, LV_CALENDAR_PART_DATE, LV_STATE_FOCUSED, LV_OPA_COVER);
