@@ -227,12 +227,12 @@ void DisplayApp::Refresh() {
               case TouchEvents::SwipeDown:
                 LoadApp(Apps::Notifications, DisplayApp::FullRefreshDirections::Down);
                 break;
-              /* case TouchEvents::SwipeRight: */
+              case TouchEvents::SwipeRight:
                 /* LoadApp(Apps::QuickSettings, DisplayApp::FullRefreshDirections::RightAnim); */
-                /* break; */
-			  /* case TouchEvents::SwipeLeft: */
+                break;
+			  case TouchEvents::SwipeLeft:
 				/* LoadApp(Apps::Calendar, DisplayApp::FullRefreshDirections::LeftAnim); */
-				/* break; */
+				break;
               case TouchEvents::DoubleTap:
                 PushMessageToSystemTask(System::Messages::GoToSleep);
                 break;
@@ -247,7 +247,7 @@ void DisplayApp::Refresh() {
         }
       } break;
       case Messages::ButtonPushed:
-        LoadApp(Apps::Clock, DisplayApp::FullRefreshDirections::Down);
+        LoadApp(Apps::Clock, DisplayApp::FullRefreshDirections::None);
         /* if (!currentScreen->OnButtonPushed()) { */
           /* if (currentApp == Apps::Clock) { */
             /* PushMessageToSystemTask(System::Messages::GoToSleep); */
@@ -258,7 +258,7 @@ void DisplayApp::Refresh() {
         break;
       case Messages::ButtonLongPressed:
 		PushMessageToSystemTask(System::Messages::GoToSleep);
-        LoadApp(Apps::Clock, DisplayApp::FullRefreshDirections::Down);
+        LoadApp(Apps::Clock, DisplayApp::FullRefreshDirections::None);
         /* if (currentApp != Apps::Clock) { */
         /*   if (currentApp == Apps::Notifications) { */
         /*     LoadApp(Apps::Clock, DisplayApp::FullRefreshDirections::Up); */
