@@ -222,17 +222,17 @@ void DisplayApp::Refresh() {
           if (currentApp == Apps::Clock) {
             switch (gesture) {
               case TouchEvents::SwipeUp:
-                LoadApp(Apps::Launcher, DisplayApp::FullRefreshDirections::Up);
+                LoadApp(Apps::QuickSettings, DisplayApp::FullRefreshDirections::Up);
                 break;
               case TouchEvents::SwipeDown:
                 LoadApp(Apps::Notifications, DisplayApp::FullRefreshDirections::Down);
                 break;
-              case TouchEvents::SwipeRight:
-                LoadApp(Apps::QuickSettings, DisplayApp::FullRefreshDirections::RightAnim);
-                break;
-			  case TouchEvents::SwipeLeft:
-				LoadApp(Apps::Calendar, DisplayApp::FullRefreshDirections::LeftAnim);
-				break;
+              /* case TouchEvents::SwipeRight: */
+                /* LoadApp(Apps::QuickSettings, DisplayApp::FullRefreshDirections::RightAnim); */
+                /* break; */
+			  /* case TouchEvents::SwipeLeft: */
+				/* LoadApp(Apps::Calendar, DisplayApp::FullRefreshDirections::LeftAnim); */
+				/* break; */
               case TouchEvents::DoubleTap:
                 PushMessageToSystemTask(System::Messages::GoToSleep);
                 break;
@@ -247,33 +247,36 @@ void DisplayApp::Refresh() {
         }
       } break;
       case Messages::ButtonPushed:
-        if (!currentScreen->OnButtonPushed()) {
-          if (currentApp == Apps::Clock) {
-            PushMessageToSystemTask(System::Messages::GoToSleep);
-          } else {
-            LoadPreviousScreen();
-          }
-        }
+        LoadApp(Apps::Clock, DisplayApp::FullRefreshDirections::Down);
+        /* if (!currentScreen->OnButtonPushed()) { */
+          /* if (currentApp == Apps::Clock) { */
+            /* PushMessageToSystemTask(System::Messages::GoToSleep); */
+          /* } else { */
+            /* LoadPreviousScreen(); */
+          /* } */
+        /* } */
         break;
       case Messages::ButtonLongPressed:
-        if (currentApp != Apps::Clock) {
-          if (currentApp == Apps::Notifications) {
-            LoadApp(Apps::Clock, DisplayApp::FullRefreshDirections::Up);
-          } else if (currentApp == Apps::QuickSettings) {
-            LoadApp(Apps::Clock, DisplayApp::FullRefreshDirections::LeftAnim);
-          } else {
-            LoadApp(Apps::Clock, DisplayApp::FullRefreshDirections::Down);
-          }
-        }
+		PushMessageToSystemTask(System::Messages::GoToSleep);
+        LoadApp(Apps::Clock, DisplayApp::FullRefreshDirections::Down);
+        /* if (currentApp != Apps::Clock) { */
+        /*   if (currentApp == Apps::Notifications) { */
+        /*     LoadApp(Apps::Clock, DisplayApp::FullRefreshDirections::Up); */
+        /*   } else if (currentApp == Apps::QuickSettings) { */
+        /*     LoadApp(Apps::Clock, DisplayApp::FullRefreshDirections::LeftAnim); */
+        /*   } else { */
+        /*     LoadApp(Apps::Clock, DisplayApp::FullRefreshDirections::Down); */
+        /*   } */
+        /* } */
         break;
       case Messages::ButtonLongerPressed:
         // Create reboot app and open it instead
-        LoadApp(Apps::SysInfo, DisplayApp::FullRefreshDirections::Up);
+        LoadApp(Apps::SysInfo, DisplayApp::FullRefreshDirections::Down);
         break;
       case Messages::ButtonDoubleClicked:
-        if (currentApp != Apps::Notifications && currentApp != Apps::NotificationsPreview) {
-          LoadApp(Apps::Notifications, DisplayApp::FullRefreshDirections::Down);
-        }
+        /* if (currentApp != Apps::Notifications && currentApp != Apps::NotificationsPreview) { */
+          LoadApp(Apps::Launcher, DisplayApp::FullRefreshDirections::Up);
+        /* } */
         break;
 
       case Messages::BleFirmwareUpdateStarted:
