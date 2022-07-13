@@ -247,14 +247,13 @@ void DisplayApp::Refresh() {
         }
       } break;
       case Messages::ButtonPushed:
-        LoadApp(Apps::Clock, DisplayApp::FullRefreshDirections::None);
-        /* if (!currentScreen->OnButtonPushed()) { */
-          /* if (currentApp == Apps::Clock) { */
-            /* PushMessageToSystemTask(System::Messages::GoToSleep); */
-          /* } else { */
-            /* LoadPreviousScreen(); */
-          /* } */
-        /* } */
+        if (!currentScreen->OnButtonPushed()) {
+          if (currentApp == Apps::Clock) {
+            PushMessageToSystemTask(System::Messages::GoToSleep);
+          } else {
+            LoadPreviousScreen();
+          }
+        }
         break;
       case Messages::ButtonLongPressed:
 		PushMessageToSystemTask(System::Messages::GoToSleep);
@@ -274,8 +273,12 @@ void DisplayApp::Refresh() {
         LoadApp(Apps::SysInfo, DisplayApp::FullRefreshDirections::Down);
         break;
       case Messages::ButtonDoubleClicked:
+		if (currentApp == Apps::Clock) {
+			LoadApp(Apps::Launcher, DisplayApp::FullRefreshDirections::Up);
+		} else {
+			LoadApp(Apps::Clock, DisplayApp::FullRefreshDirections::None);
+		}
         /* if (currentApp != Apps::Notifications && currentApp != Apps::NotificationsPreview) { */
-          LoadApp(Apps::Launcher, DisplayApp::FullRefreshDirections::Up);
         /* } */
         break;
 
