@@ -13,7 +13,7 @@
 #define LV_ATTRIBUTE_BG_CLOCK
 #endif
 
-const LV_ATTRIBUTE_MEM_ALIGN LV_ATTRIBUTE_LARGE_CONST LV_ATTRIBUTE_IMG_PINETIME(3) uint8_t pinetime(3)_map[] = {
+const LV_ATTRIBUTE_MEM_ALIGN LV_ATTRIBUTE_LARGE_CONST LV_ATTRIBUTE_BG_CLOCK uint8_t bg_clock_map[] = {
   0xfc, 0xfc, 0xfc, 0xff, 	/*Color of index 0*/
   0x00, 0x00, 0x00, 0xff, 	/*Color of index 1*/
   0xdb, 0xdc, 0xe4, 0xff, 	/*Color of index 2*/
