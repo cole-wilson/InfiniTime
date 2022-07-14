@@ -81,6 +81,7 @@ WatchFaceAnalog::WatchFaceAnalog(Pinetime::Applications::DisplayApp* app,
 
   // steps
   steps = lv_arc_create(lv_scr_act(), NULL);
+  lv_obj_set_style_local_line_color(steps, LV_ARC_PART_INDIC, LV_STATE_DEFAULT, lv_color_hex(0x264d8c));
   lv_arc_set_bg_angles(steps, 0, 360);
   lv_obj_align(steps, NULL, LV_ALIGN_CENTER, 0, 0);
   lv_arc_set_angles(steps, 197, 280);
