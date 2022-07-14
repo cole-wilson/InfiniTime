@@ -11,6 +11,7 @@
  * */
 
 #include "displayapp/screens/Screen.h"
+#include "systemtask/SystemTask.h"
 #include <lvgl/lvgl.h>
 #include "components/battery/BatteryController.h"
 #include "components/datetime/DateTimeController.h"
@@ -26,12 +27,12 @@ namespace Pinetime {
       class Row : public Screen {
       public:
         Row(DisplayApp* app,
-				Controllers::BatteryController& batteryController,
-				Controllers::DateTimeController& dateTimeController,
-				Controllers::MotorController& motorController,
-				Controllers::BrightnessController& brightnessController,
-				Controllers::TimerController& timerController,
-				Controllers::MotionController& motionController,
+				Controllers::Battery& batteryController,
+				Controllers::DateTime& dateTimeController,
+				Controllers::Motor& motorController,
+				Controllers::Brightness& brightnessController,
+				Controllers::Timer& timerController,
+				Controllers::Motion& motionController,
 				Controllers::FS& fs);
         ~Row() override;
       };

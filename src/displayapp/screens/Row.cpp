@@ -4,12 +4,12 @@
 using namespace Pinetime::Applications::Screens;
 
 Row::Row(DisplayApp* app,
-				Controllers::BatteryController& batteryController,
-				Controllers::DateTimeController& dateTimeController,
-				Controllers::MotorController& motorController,
-				Controllers::BrightnessController& brightnessController,
-				Controllers::TimerController& timerController,
-				Controllers::MotionController& motionController,
+				Controllers::Battery& batteryController,
+				Controllers::DateTime& dateTimeController,
+				Controllers::Motor& motorController,
+				Controllers::Brightness& brightnessController,
+				Controllers::Timer& timerController,
+				Controllers::Motion& motionController,
 				Controllers::FS& fs)
 	: Screen(app),
     batteryController {batteryController},
@@ -20,6 +20,9 @@ Row::Row(DisplayApp* app,
 	motionController {motionController},
 	fs {fs}
 {
+	systemTask.PushMessage(Pinetime::System::Messages::DisableSleeping);
+
+
 	// change screen background
 	lv_obj_set_style_local_bg_color(lv_scr_act(), LV_OBJ_PART_MAIN, LV_STATE_DEFAULT, lv_color_hex(0x5C7162));
 
@@ -54,4 +57,5 @@ Row::Row(DisplayApp* app,
 
 Row::~Row() {
   lv_obj_clean(lv_scr_act());
+  systemTask.PushMessage(Pinetime::System::Messages::EnableSleeping);
 }
