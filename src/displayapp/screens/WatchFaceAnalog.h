@@ -49,6 +49,7 @@ namespace Pinetime {
         DirtyValue<bool> notificationState {false};
 
 		lv_obj_t* steps;
+  	    lv_obj_t* mooncover;
 		lv_obj_t* timer;
 		lv_obj_t* timer_label;
 		lv_obj_t* heart_label;

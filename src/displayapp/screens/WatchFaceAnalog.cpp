@@ -42,6 +42,48 @@ namespace {
 
 }
 
+void moon(lv_obj_t* cover) {
+  float daysfromnewmoon = (std::chrono::system_clock::now().time_since_epoch().count()/1000000/86400) - 947211240;
+  float part = (daysfromnewmoon / 29.53)%1;
+
+  if (part >= 0 && part < 1) {
+	  // new moon
+	  lv_obj_set_size(mooncover, 43, 43);
+  }
+  else if (part >= 1 && part < 6.38264692644001) {
+	//waxing crescent
+	lv_obj_set_size(mooncover, 32, 43);
+  }
+  else if (part >= 6.38264692644001 && part < 8.38264692644) {
+	  //first quarter
+	  lv_obj_set_size(mooncover, 21, 43);
+
+	}
+  else if (part >= 8.38264692644 && part < 13.76529385288) {
+	  // waxing gibbous
+	  lv_obj_set_size(mooncover, 10, 43);
+  }
+  else if (part >= 13.76529385288 && part < 15.76529385288) {
+	  // full: do nothing
+  }
+  else if (part >= 15.76529385288 && part < 21.14794077932) {
+	  // waning gibbous
+	  lv_obj_set_size(mooncover, 10, 43);
+  }
+  else if (part >= 21.14794077932 && part < 23.14794077932) {
+	  // last quarter
+	  lv_obj_set_size(mooncover, 21, 43);
+  }
+  else if (part >= 23.14794077932 && part < 28.53058770576) {
+	  // waning crescent
+	  lv_obj_set_size(mooncover, 32, 43);
+  }
+  else {
+	  // new moon
+	  lv_obj_set_size(mooncover, 43, 43);
+  }
+}
+
 WatchFaceAnalog::WatchFaceAnalog(Pinetime::Applications::DisplayApp* app,
                                  Controllers::DateTime& dateTimeController,
                                  Controllers::Battery& batteryController,
@@ -65,6 +107,13 @@ WatchFaceAnalog::WatchFaceAnalog(Pinetime::Applications::DisplayApp* app,
   lv_obj_t* bg_clock_img = lv_img_create(lv_scr_act(), NULL);
   lv_img_set_src(bg_clock_img, &bg_clock);
   lv_obj_align(bg_clock_img, NULL, LV_ALIGN_CENTER, 0, 0);
+
+  mooncover = lv_bar_create(lv_scr_act(), NULL);
+  lv_obj_set_size(mooncover, 43, 43);
+  lv_obj_set_style_local_bg_opa(mooncover, LV_OBJ_PART_MAIN, LV_STATE_DEFAULT, LV_OPA_50);
+  lv_obj_align(mooncover, NULL, LV_ALIGN_IN_TOP_LEFT, 149, 63);
+  moon(mooncover);
+
 
   batteryIcon.Create(lv_scr_act());
   lv_obj_align(batteryIcon.GetObject(), nullptr, LV_ALIGN_IN_TOP_RIGHT, 0, 0);
@@ -92,10 +141,7 @@ WatchFaceAnalog::WatchFaceAnalog(Pinetime::Applications::DisplayApp* app,
   lv_arc_set_angles(steps, 0, 360);
   lv_arc_set_rotation(steps, 270);
   lv_obj_align(steps, NULL, LV_ALIGN_CENTER, 0, 0);
-  lv_arc_set_value(steps, 290);
-
-  // moon
-  
+  lv_arc_set_value(steps, 290);  
 
   // timer
   timer = lv_arc_create(lv_scr_act(), NULL);
@@ -109,7 +155,7 @@ WatchFaceAnalog::WatchFaceAnalog(Pinetime::Applications::DisplayApp* app,
   lv_arc_set_bg_angles(timer, 0, 360);
   lv_arc_set_angles(timer, 0, 360);
   lv_arc_set_rotation(timer, 270);
-  lv_obj_align(timer, NULL, LV_ALIGN_CENTER);
+  lv_obj_align(timer, NULL, LV_ALIGN_CENTER, 0, 0);
   lv_arc_set_value(timer, 200);
 
   timer_label = lv_label_create(lv_scr_act(), NULL);
@@ -283,6 +329,7 @@ void WatchFaceAnalog::Refresh() {
 
     if ((month != currentMonth) || (dayOfWeek != currentDayOfWeek) || (day != currentDay)) {
       lv_label_set_text_fmt(label_date_day, "%s\n%02i", dateTimeController.DayOfWeekShortToString(), day);
+	  moon(mooncover);
 
       currentMonth = month;
       currentDayOfWeek = dayOfWeek;
