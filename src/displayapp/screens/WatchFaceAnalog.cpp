@@ -82,10 +82,51 @@ WatchFaceAnalog::WatchFaceAnalog(Pinetime::Applications::DisplayApp* app,
   // steps
   steps = lv_arc_create(lv_scr_act(), NULL);
   lv_obj_set_style_local_line_color(steps, LV_ARC_PART_INDIC, LV_STATE_DEFAULT, lv_color_hex(0x264d8c));
-  lv_obj_set_size(steps, 200, 200);
+  lv_obj_set_style_local_line_width(steps, LV_ARC_PART_INDIC, LV_STATE_DEFAULT, 2);
+  lv_obj_set_style_local_line_color(steps, LV_ARC_PART_MAIN,  LV_STATE_DEFAULT, lv_color_hex(0x000000));
+  lv_obj_set_style_local_line_width(steps, LV_ARC_PART_INDIC, LV_STATE_DEFAULT, 2);
+  lv_arc_set_rotation(steps, 270);
+  lv_arc_set_range(steps, 0, 100);
+  lv_obj_set_size(steps, 205, 205);
   lv_arc_set_bg_angles(steps, 0, 360);
   lv_obj_align(steps, NULL, LV_ALIGN_CENTER, 0, 0);
-  lv_arc_set_angles(steps, 197, 280);
+  lv_arc_set_value(steps, 87);
+
+  // timer
+  timer = lv_arc_create(lv_scr_act(), NULL);
+  lv_arc_set_rotation(timer, 270);
+  lv_arc_set_range(timer, 0, 100);
+  lv_obj_set_size(timer, 40, 40);
+  lv_obj_set_style_local_line_color(timer, LV_ARC_PART_MAIN,  LV_STATE_DEFAULT, lv_color_hex(0x333333));
+  lv_obj_set_style_local_line_color(timer, LV_ARC_PART_INDIC,  LV_STATE_DEFAULT, lv_color_hex(0xff9d00));
+  lv_obj_align(timer, NULL, LV_ALIGN_IN_TOP_LEFT, 55, 66);
+
+  timer_label = lv_label_create(lv_scr_act(), NULL);
+  lv_label_set_text(timer_label, ":34");
+  lv_label_set_align(timer_label, LV_LABEL_ALIGN_CENTER);
+  lv_label_set_align(timer_label, LV_ALIGN_IN_TOP_LEFT, 76, 87);
+
+
+  // heart
+  heart_label = lv_label_create(lv_scr_act(), NULL);
+  lv_label_set_text(heart_label, "134");
+  lv_label_set_align(heart_label, LV_LABEL_ALIGN_LEFT);
+  lv_label_set_align(heart_label, LV_ALIGN_IN_BOTTOM_LEFT, 0, 0);
+
+  // stroke rate
+  stroke_label = lv_label_create(lv_scr_act(), NULL);
+  lv_label_set_text(stroke_label, "28");
+  lv_label_set_align(stroke_label, LV_LABEL_ALIGN_RIGHT);
+  lv_label_set_align(stroke_label, LV_ALIGN_IN_BOTTOM_RIGHT, 0, 0);
+
+  // info label
+  info_label = lv_label_create(lv_scr_act(), NULL);
+  lv_label_set_recolor(info_label, true);
+  lv_label_set_text(info_label, "#0000FF Now Playing#\nCharlie Thorne\n--");
+  lv_label_set_align(info_label, LV_LABEL_ALIGN_CENTER);
+  lv_label_set_align(info_label, LV_ALIGN_CENTER, 0, 10);
+
+
 
   // Date - Day / Week day
 
@@ -93,7 +134,7 @@ WatchFaceAnalog::WatchFaceAnalog(Pinetime::Applications::DisplayApp* app,
   lv_obj_set_style_local_text_color(label_date_day, LV_LABEL_PART_MAIN, LV_STATE_DEFAULT, LV_COLOR_MAKE(0xff, 0xb0, 0x0));
   lv_label_set_text_fmt(label_date_day, "%s\n%02i", dateTimeController.DayOfWeekShortToString(), dateTimeController.Day());
   lv_label_set_align(label_date_day, LV_LABEL_ALIGN_CENTER);
-  lv_obj_align(label_date_day, NULL, LV_ALIGN_CENTER, 50, 0);
+  lv_obj_align(label_date_day, NULL, LV_ALIGN_CENTER, 50, 20);
 
   minute_body = lv_line_create(lv_scr_act(), NULL);
   minute_body_trace = lv_line_create(lv_scr_act(), NULL);
