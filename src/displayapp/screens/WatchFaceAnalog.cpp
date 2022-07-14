@@ -110,27 +110,27 @@ WatchFaceAnalog::WatchFaceAnalog(Pinetime::Applications::DisplayApp* app,
   timer_label = lv_label_create(lv_scr_act(), NULL);
   lv_label_set_text(timer_label, ":34");
   lv_label_set_align(timer_label, LV_LABEL_ALIGN_CENTER);
-  lv_obj_align(timer_label, LV_ALIGN_IN_TOP_LEFT, 76, 87);
+  lv_obj_align(timer_label, NULL, LV_ALIGN_IN_TOP_LEFT, 76, 87);
 
 
   // heart
   heart_label = lv_label_create(lv_scr_act(), NULL);
   lv_label_set_text(heart_label, "134");
   lv_label_set_align(heart_label, LV_LABEL_ALIGN_LEFT);
-  lv_obj_align(heart_label, LV_ALIGN_IN_BOTTOM_LEFT, 0, 0);
+  lv_obj_align(heart_label, NULL, LV_ALIGN_IN_BOTTOM_LEFT, 0, 0);
 
   // stroke rate
   stroke_label = lv_label_create(lv_scr_act(), NULL);
   lv_label_set_text(stroke_label, "28");
   lv_label_set_align(stroke_label, LV_LABEL_ALIGN_RIGHT);
-  lv_obj_align(stroke_label, LV_ALIGN_IN_BOTTOM_RIGHT, 0, 0);
+  lv_obj_align(stroke_label, NULL, LV_ALIGN_IN_BOTTOM_RIGHT, 0, 0);
 
   // info label
   info_label = lv_label_create(lv_scr_act(), NULL);
   lv_label_set_recolor(info_label, true);
   lv_label_set_text(info_label, "#0000FF Now Playing#\nCharlie Thorne\n--");
   lv_label_set_align(info_label, LV_LABEL_ALIGN_CENTER);
-  lv_obj_align(info_label, LV_ALIGN_CENTER, 0, 10);
+  lv_obj_align(info_label, NULL, LV_ALIGN_CENTER, 0, 10);
 
 
 
