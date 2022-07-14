@@ -43,8 +43,9 @@ namespace {
 }
 
 void moon(lv_obj_t* mooncover) {
-  float daysfromnewmoon = (std::chrono::system_clock::now().time_since_epoch().count()/1000000/86400) - 947211240;
-  float part = std::fmod(daysfromnewmoon / 29.53, 1.0);
+  float daysfromnewmoon = (std::chrono::system_clock::now().time_since_epoch().count()/1000000/86400) - (947211240/86400);
+  /* float part = std::fmod(daysfromnewmoon / 29.53, 1.0); */
+  float part = 14.0;
 
   if (part >= 0 && part < 1) {
 	  // new moon
@@ -111,6 +112,7 @@ WatchFaceAnalog::WatchFaceAnalog(Pinetime::Applications::DisplayApp* app,
   mooncover = lv_bar_create(lv_scr_act(), NULL);
   lv_obj_set_size(mooncover, 43, 43);
   lv_obj_set_style_local_bg_opa(mooncover, LV_OBJ_PART_MAIN, LV_STATE_DEFAULT, LV_OPA_50);
+  lv_obj_set_style_local_bg_color(mooncover, LV_OBJ_PART_MAIN, LV_STATE_DEFAULT, lv_color_hex(0x000000));
   lv_obj_align(mooncover, NULL, LV_ALIGN_IN_TOP_LEFT, 149, 63);
   moon(mooncover);
 
@@ -145,11 +147,11 @@ WatchFaceAnalog::WatchFaceAnalog(Pinetime::Applications::DisplayApp* app,
 
   // timer
   timer = lv_arc_create(lv_scr_act(), NULL);
-  lv_obj_set_style_local_line_color(timer, LV_OBJ_PART_MAIN,  LV_STATE_DEFAULT, lv_color_hex(0x111111));
-  lv_obj_set_style_local_line_width(steps, LV_ARC_PART_INDIC, LV_STATE_DEFAULT, 7);
+  lv_obj_set_style_local_line_color(timer, LV_OBJ_PART_MAIN,  LV_STATE_DEFAULT, lv_color_hex(0x000000));
+  lv_obj_set_style_local_line_width(timer, LV_ARC_PART_INDIC, LV_STATE_DEFAULT, 7);
   lv_obj_set_style_local_line_color(timer, LV_ARC_PART_INDIC,  LV_STATE_DEFAULT, lv_color_hex(0xff9d00));
-  lv_obj_set_style_local_line_width(steps, LV_OBJ_PART_MAIN, LV_STATE_DEFAULT, 7);
-  lv_obj_set_size(timer, 194, 194);
+  lv_obj_set_style_local_line_width(timer, LV_OBJ_PART_MAIN, LV_STATE_DEFAULT, 7);
+  lv_obj_set_size(timer, 190, 190);
 
   lv_arc_set_range(timer, 0, 360);
   lv_arc_set_bg_angles(timer, 0, 360);
@@ -161,7 +163,7 @@ WatchFaceAnalog::WatchFaceAnalog(Pinetime::Applications::DisplayApp* app,
   timer_label = lv_label_create(lv_scr_act(), NULL);
   lv_label_set_text(timer_label, "34:18");
   lv_label_set_align(timer_label, LV_LABEL_ALIGN_CENTER);
-  lv_obj_align(timer_label, timer, LV_ALIGN_IN_TOP_LEFT, 47, 61);
+  lv_obj_align(timer_label, timer, LV_ALIGN_IN_TOP_LEFT, 7, 7);
 
 
   // heart

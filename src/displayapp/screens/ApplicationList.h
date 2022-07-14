@@ -40,17 +40,18 @@ namespace Pinetime {
           {Symbols::stopWatch, Apps::StopWatch},
           {Symbols::clock, Apps::Alarm},
           {Symbols::hourGlass, Apps::Timer},
+		  {"row", Apps::Row},
           {Symbols::shoe, Apps::Steps},
           {Symbols::heartBeat, Apps::HeartRate},
-          {Symbols::music, Apps::Music},
 
+          {Symbols::music, Apps::Music},
           {Symbols::paintbrush, Apps::Paint},
           {Symbols::paddle, Apps::Paddle},
           {"2", Apps::Twos},
           {Symbols::chartLine, Apps::Motion},
           {Symbols::drum, Apps::Metronome},
-		  {"+=", Apps::Calculator},
 
+		  {"+=", Apps::Calculator},
 		  {"dce", Apps::Dice},
 		  {"wko", Apps::Workout}
           

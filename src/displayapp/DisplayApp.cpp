@@ -20,8 +20,9 @@
 #include "displayapp/screens/Metronome.h"
 #include "displayapp/screens/Dice.h"
 #include "displayapp/screens/Music.h"
-#include "displayapp/screens/Calendar.h"
 #include "displayapp/screens/Timeline.h"
+#include "displayapp/screens/Calendar.h"
+#include "displayapp/screens/Row.h"
 #include "displayapp/screens/Navigation.h"
 #include "displayapp/screens/Notifications.h"
 #include "displayapp/screens/SystemInfo.h"
@@ -472,6 +473,9 @@ void DisplayApp::LoadApp(Apps app, DisplayApp::FullRefreshDirections direction) 
       currentScreen = std::make_unique<Screens::Calendar>(this, batteryController,dateTimeController);
 	  ReturnApp(Apps::Clock, FullRefreshDirections::RightAnim, TouchEvents::SwipeRight);
       break;
+	case Apps::Row:
+	  currentScreen = std::make_unique<Screens::Row>(this, batteryController, dateTimeController, motorController, brightnessController, timerController, motionController, fs);
+	  break;
 	case Apps::Timeline:
 	  currentScreen = std::make_unique<Screens::Timeline>(this, motorController, dateTimeController, fs);
 	  ReturnApp(Apps::Calendar, FullRefreshDirections::Left, TouchEvents::SwipeRight);

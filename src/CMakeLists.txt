@@ -386,6 +386,7 @@ list(APPEND SOURCE_FILES
         displayapp/screens/Music.cpp
         displayapp/screens/Weather.cpp
         displayapp/screens/Calendar.cpp
+		displayapp/screens/Row.cpp
 		displayapp/screens/Timeline.cpp
         displayapp/screens/Navigation.cpp
         displayapp/screens/Metronome.cpp
