@@ -22,7 +22,8 @@ Clock::Clock(DisplayApp* app,
              Controllers::NotificationManager& notificatioManager,
              Controllers::Settings& settingsController,
              Controllers::HeartRateController& heartRateController,
-             Controllers::MotionController& motionController)
+             Controllers::MotionController& motionController,
+			 Controllers::TimerController& timerController)
   : Screen(app),
     dateTimeController {dateTimeController},
     batteryController {batteryController},
