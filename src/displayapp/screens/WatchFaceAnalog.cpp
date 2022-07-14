@@ -47,14 +47,16 @@ WatchFaceAnalog::WatchFaceAnalog(Pinetime::Applications::DisplayApp* app,
                                  Controllers::Battery& batteryController,
                                  Controllers::Ble& bleController,
                                  Controllers::NotificationManager& notificationManager,
-                                 Controllers::Settings& settingsController)
+                                 Controllers::Settings& settingsController,
+								 Controllers::TimerController& timerController)
   : Screen(app),
     currentDateTime {{}},
     dateTimeController {dateTimeController},
     batteryController {batteryController},
     bleController {bleController},
     notificationManager {notificationManager},
-    settingsController {settingsController} {
+    settingsController {settingsController},
+	timerController {timerController} {
 
   sHour = 99;
   sMinute = 99;
@@ -76,6 +78,12 @@ WatchFaceAnalog::WatchFaceAnalog(Pinetime::Applications::DisplayApp* app,
   lv_obj_set_style_local_text_color(notificationIcon, LV_LABEL_PART_MAIN, LV_STATE_DEFAULT, lv_color_hex(0x00FF00));
   lv_label_set_text_static(notificationIcon, NotificationIcon::GetIcon(false));
   lv_obj_align(notificationIcon, NULL, LV_ALIGN_IN_TOP_LEFT, 0, 0);
+
+  // steps
+  steps = lv_arc_create(lv_scr_act(), NULL);
+  lv_arc_set_bg_angles(steps, 0, 360);
+  lv_obj_align(steps, NULL, LV_ALIGN_CENTER, 0, 0);
+  lv_arc_set_angles(steps, 270, 197);
 
   // Date - Day / Week day
 

@@ -31,6 +31,7 @@ Clock::Clock(DisplayApp* app,
     settingsController {settingsController},
     heartRateController {heartRateController},
     motionController {motionController},
+	timerController {timerController},
     screen {[this, &settingsController]() {
       switch (settingsController.GetClockFace()) {
         case 0:
@@ -80,7 +81,8 @@ std::unique_ptr<Screen> Clock::WatchFaceAnalogScreen() {
                                                     batteryController,
                                                     bleController,
                                                     notificatioManager,
-                                                    settingsController);
+                                                    settingsController,
+													timerController);
 }
 
 std::unique_ptr<Screen> Clock::WatchFacePineTimeStyleScreen() {

@@ -9,6 +9,7 @@
 #include "components/battery/BatteryController.h"
 #include "components/ble/BleController.h"
 #include "components/ble/NotificationManager.h"
+#include "components/timer/TimerController.h"
 #include <displayapp/screens/BatteryIcon.h>
 
 namespace Pinetime {
@@ -46,6 +47,7 @@ namespace Pinetime {
         DirtyValue<std::chrono::time_point<std::chrono::system_clock, std::chrono::nanoseconds>> currentDateTime;
         DirtyValue<bool> notificationState {false};
 
+		lv_obj_t* steps;
         lv_obj_t* hour_body;
         lv_obj_t* hour_body_trace;
         lv_obj_t* minute_body;
