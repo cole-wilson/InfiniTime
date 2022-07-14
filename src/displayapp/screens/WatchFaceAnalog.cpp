@@ -99,7 +99,7 @@ WatchFaceAnalog::WatchFaceAnalog(Pinetime::Applications::DisplayApp* app,
   lv_obj_set_style_local_line_color(timer, LV_OBJ_PART_MAIN,  LV_STATE_DEFAULT, lv_color_hex(0x111111));
   lv_obj_set_style_local_line_width(steps, LV_ARC_PART_INDIC, LV_STATE_DEFAULT, 3);
   lv_obj_set_style_local_line_color(timer, LV_ARC_PART_INDIC,  LV_STATE_DEFAULT, lv_color_hex(0xff9d00));
-  lv_obj_set_style_local_line_width(steps, LV_ARC_PART_MAIN, LV_STATE_DEFAULT, 3);
+  lv_obj_set_style_local_line_width(steps, LV_OBJ_PART_MAIN, LV_STATE_DEFAULT, 3);
   lv_obj_set_size(timer, 40, 40);
 
   lv_arc_set_range(timer, 0, 360);
