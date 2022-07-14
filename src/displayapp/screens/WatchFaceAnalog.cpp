@@ -82,9 +82,9 @@ WatchFaceAnalog::WatchFaceAnalog(Pinetime::Applications::DisplayApp* app,
   // steps
   steps = lv_arc_create(lv_scr_act(), NULL);
   lv_obj_set_style_local_line_color(steps, LV_ARC_PART_INDIC, LV_STATE_DEFAULT, lv_color_hex(0x264d8c));
-  lv_obj_set_style_local_line_width(steps, LV_ARC_PART_INDIC, LV_STATE_DEFAULT, 5);
+  lv_obj_set_style_local_line_width(steps, LV_ARC_PART_INDIC, LV_STATE_DEFAULT, 7);
   lv_obj_set_style_local_line_color(steps, LV_OBJ_PART_MAIN,  LV_STATE_DEFAULT, lv_color_hex(0x000000));
-  lv_obj_set_style_local_line_width(steps, LV_OBJ_PART_MAIN, LV_STATE_DEFAULT, 5);
+  lv_obj_set_style_local_line_width(steps, LV_OBJ_PART_MAIN, LV_STATE_DEFAULT, 7);
   lv_obj_set_size(steps, 205, 205);
 
   lv_arc_set_range(steps, 0, 360);
@@ -97,35 +97,35 @@ WatchFaceAnalog::WatchFaceAnalog(Pinetime::Applications::DisplayApp* app,
   // timer
   timer = lv_arc_create(lv_scr_act(), NULL);
   lv_obj_set_style_local_line_color(timer, LV_OBJ_PART_MAIN,  LV_STATE_DEFAULT, lv_color_hex(0x111111));
-  lv_obj_set_style_local_line_width(steps, LV_ARC_PART_INDIC, LV_STATE_DEFAULT, 3);
+  lv_obj_set_style_local_line_width(steps, LV_ARC_PART_INDIC, LV_STATE_DEFAULT, 7);
   lv_obj_set_style_local_line_color(timer, LV_ARC_PART_INDIC,  LV_STATE_DEFAULT, lv_color_hex(0xff9d00));
-  lv_obj_set_style_local_line_width(steps, LV_OBJ_PART_MAIN, LV_STATE_DEFAULT, 3);
-  lv_obj_set_size(timer, 40, 40);
+  lv_obj_set_style_local_line_width(steps, LV_OBJ_PART_MAIN, LV_STATE_DEFAULT, 7);
+  lv_obj_set_size(timer, 194, 194);
 
   lv_arc_set_range(timer, 0, 360);
   lv_arc_set_bg_angles(timer, 0, 360);
   lv_arc_set_angles(timer, 0, 360);
   lv_arc_set_rotation(timer, 270);
-  lv_obj_align(timer, NULL, LV_ALIGN_IN_TOP_LEFT, 55, 66);
+  lv_obj_align(timer, NULL, LV_ALIGN_CENTER_LEFT);
   lv_arc_set_value(timer, 200);
 
   timer_label = lv_label_create(lv_scr_act(), NULL);
-  lv_label_set_text(timer_label, "34");
+  lv_label_set_text(timer_label, "34:18");
   lv_label_set_align(timer_label, LV_LABEL_ALIGN_CENTER);
-  lv_obj_align(timer_label, timer, LV_ALIGN_CENTER, 0, 0);
+  lv_obj_align(timer_label, timer, LV_ALIGN_IN_TOP_LEFT, 47, 61);
 
 
   // heart
   heart_label = lv_label_create(lv_scr_act(), NULL);
   lv_label_set_text(heart_label, "134");
   lv_label_set_align(heart_label, LV_LABEL_ALIGN_LEFT);
-  lv_obj_align(heart_label, NULL, LV_ALIGN_IN_BOTTOM_LEFT, 7, 7);
+  lv_obj_align(heart_label, NULL, LV_ALIGN_IN_BOTTOM_LEFT, 7, -7);
 
   // stroke rate
   stroke_label = lv_label_create(lv_scr_act(), NULL);
   lv_label_set_text(stroke_label, "28");
   lv_label_set_align(stroke_label, LV_LABEL_ALIGN_RIGHT);
-  lv_obj_align(stroke_label, NULL, LV_ALIGN_IN_BOTTOM_RIGHT, 7, 7);
+  lv_obj_align(stroke_label, NULL, LV_ALIGN_IN_BOTTOM_RIGHT, -7, -7);
 
   // info label
   info_label = lv_label_create(lv_scr_act(), NULL);
