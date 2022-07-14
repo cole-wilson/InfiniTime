@@ -44,7 +44,7 @@ namespace {
 
 void moon(lv_obj_t* mooncover) {
   float daysfromnewmoon = (std::chrono::system_clock::now().time_since_epoch().count()/1000000/86400) - 947211240;
-  float part = (daysfromnewmoon / 29.53)%1;
+  float part = (daysfromnewmoon / 29.53)%1.0;
 
   if (part >= 0 && part < 1) {
 	  // new moon
