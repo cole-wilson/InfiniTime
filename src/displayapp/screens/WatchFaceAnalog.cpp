@@ -94,6 +94,9 @@ WatchFaceAnalog::WatchFaceAnalog(Pinetime::Applications::DisplayApp* app,
   lv_obj_align(steps, NULL, LV_ALIGN_CENTER, 0, 0);
   lv_arc_set_value(steps, 290);
 
+  // moon
+  
+
   // timer
   timer = lv_arc_create(lv_scr_act(), NULL);
   lv_obj_set_style_local_line_color(timer, LV_OBJ_PART_MAIN,  LV_STATE_DEFAULT, lv_color_hex(0x111111));
@@ -106,7 +109,7 @@ WatchFaceAnalog::WatchFaceAnalog(Pinetime::Applications::DisplayApp* app,
   lv_arc_set_bg_angles(timer, 0, 360);
   lv_arc_set_angles(timer, 0, 360);
   lv_arc_set_rotation(timer, 270);
-  lv_obj_align(timer, NULL, LV_ALIGN_CENTER_LEFT);
+  lv_obj_align(timer, NULL, LV_ALIGN_CENTER);
   lv_arc_set_value(timer, 200);
 
   timer_label = lv_label_create(lv_scr_act(), NULL);
