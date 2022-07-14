@@ -83,7 +83,7 @@ WatchFaceAnalog::WatchFaceAnalog(Pinetime::Applications::DisplayApp* app,
   steps = lv_arc_create(lv_scr_act(), NULL);
   lv_arc_set_bg_angles(steps, 0, 360);
   lv_obj_align(steps, NULL, LV_ALIGN_CENTER, 0, 0);
-  lv_arc_set_angles(steps, 270, 197);
+  lv_arc_set_angles(steps, 197, 280);
 
   // Date - Day / Week day
 
