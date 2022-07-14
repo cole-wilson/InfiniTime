@@ -30,7 +30,7 @@ namespace Pinetime {
               Controllers::Settings& settingsController,
               Controllers::HeartRateController& heartRateController,
               Controllers::MotionController& motionController,
-			  Controllers::TimerController& timerController,
+			  Controllers::TimerController& timerController
 			  );
         ~Clock() override;
 
