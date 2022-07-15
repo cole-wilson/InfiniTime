@@ -29,10 +29,10 @@ namespace Pinetime {
         Row(DisplayApp* app,
 				Controllers::Battery& batteryController,
 				Controllers::DateTime& dateTimeController,
-				Controllers::Motor& motorController,
-				Controllers::Brightness& brightnessController,
-				Controllers::Timer& timerController,
-				Controllers::Motion& motionController,
+				Controllers::MotorController& motorController,
+				Controllers::BrightnessController& brightnessController,
+				Controllers::TimerController& timerController,
+				Controllers::MotionController& motionController,
 				Controllers::FS& fs);
         ~Row() override;
       };
