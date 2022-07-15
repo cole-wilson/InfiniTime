@@ -11,7 +11,7 @@ Row::Row(DisplayApp* app,
 				Controllers::TimerController& timerController,
 				Controllers::MotionController& motionController,
 				Controllers::FS& fs)
-	: Screen(app),
+	: Screen(app)//,
 //    batteryController {batteryController},
 //    dateTimeController {dateTimeController},
 //	motorController {motorController},
@@ -20,7 +20,7 @@ Row::Row(DisplayApp* app,
 //	motionController {motionController},
 //	fs {fs}
 {
-	system.PushMessage(Pinetime::System::Messages::DisableSleeping);
+	//system.PushMessage(Pinetime::System::Messages::DisableSleeping);
 
 
 	// change screen background
@@ -57,5 +57,5 @@ Row::Row(DisplayApp* app,
 
 Row::~Row() {
   lv_obj_clean(lv_scr_act());
-  system.PushMessage(Pinetime::System::Messages::EnableSleeping);
+  //system.PushMessage(Pinetime::System::Messages::EnableSleeping);
 }
