@@ -71,10 +71,10 @@ void Row::Refresh() {
 		uint32_t seconds = timerController.GetTimeRemaining() / 1000;
 		lv_label_set_text_fmt(timer, "%.2d:%.2d", seconds/60, seconds%60);
 	}
-	for (int i=1;i<motiondatalen;i++) {
+	for (int i=1;i<3;i++) {
 		motiondata[i-1] = motiondata[i];
 	}
-	motiondata[motiondatalen-1] = motionController.X();
+	motiondata[3-1] = motionController.X();
 	lv_label_set_text_fmt(strokecount, "%d, %d, %d", motiondata[0], motiondata[1], motiondata[2]);
 }
 void Row::OnButtonEvent(lv_obj_t* obj, lv_event_t event) {
