@@ -11,7 +11,7 @@ Row::Row(DisplayApp* app,
 				Controllers::BrightnessController& brightnessController,
 				Controllers::TimerController& timerController,
 				Controllers::MotionController& motionController,
-				Controllers::FS& fs,System::SystemTask& systemTask)
+				Controllers::FS& fs,System::SystemTask* systemTask)
 	: Screen(app),
     batteryController {batteryController},
     dateTimeController {dateTimeController},
