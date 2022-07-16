@@ -39,14 +39,14 @@ Row::Row(DisplayApp* app,
 
 	strokerate = lv_label_create(lv_scr_act(), NULL);
     lv_obj_add_style(strokerate, LV_OBJ_PART_MAIN, &style);
-	lv_obj_set_style_local_text_font(strokerate, LV_LABEL_PART_MAIN, LV_STATE_DEFAULT, &jetbrains_mono_extrabold_compressed);
+	/* lv_obj_set_style_local_text_font(strokerate, LV_LABEL_PART_MAIN, LV_STATE_DEFAULT, &jetbrains_mono_extrabold_compressed); */
 	lv_label_set_text(strokerate, "28");
 	lv_label_set_align(strokerate, LV_LABEL_ALIGN_CENTER);
 	lv_obj_align(strokerate, NULL, LV_ALIGN_IN_TOP_LEFT, 0, 30);
 
 	timer = lv_label_create(lv_scr_act(), NULL);
     lv_obj_add_style(timer, LV_OBJ_PART_MAIN, &style);
-	lv_obj_set_style_local_text_font(timer, LV_LABEL_PART_MAIN, LV_STATE_DEFAULT, &jetbrains_mono_extrabold_compressed);
+	/* lv_obj_set_style_local_text_font(timer, LV_LABEL_PART_MAIN, LV_STATE_DEFAULT, &jetbrains_mono_extrabold_compressed); */
 	lv_label_set_text(timer, "06:27");
 	lv_label_set_align(timer, LV_LABEL_ALIGN_CENTER);
 	lv_obj_align(timer, NULL, LV_ALIGN_IN_BOTTOM_MID, 0, -5);
@@ -77,6 +77,12 @@ void Row::OnButtonEvent(lv_obj_t* obj, lv_event_t event) {
 	/* } */
   /* } */
 }
+
+void Row::OnButtonPressed() {return true;}
+void Row::OnButtonDoubleClicked() {return true;}
+void Row::OnButtonLongPressed() {return true;}
+void Row::OnButtonLongerPressed() {return true;}
+
 Row::~Row() {
   lv_task_del(taskRefresh);
   lv_obj_clean(lv_scr_act());
