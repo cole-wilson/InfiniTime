@@ -105,9 +105,9 @@ WatchFaceAnalog::WatchFaceAnalog(Pinetime::Applications::DisplayApp* app,
   sMinute = 99;
   sSecond = 99;
 
-  lv_obj_t* bg_clock_img = lv_img_create(lv_scr_act(), NULL);
-  lv_img_set_src(bg_clock_img, &bg_clock);
-  lv_obj_align(bg_clock_img, NULL, LV_ALIGN_CENTER, 0, 0);
+  /* lv_obj_t* bg_clock_img = lv_img_create(lv_scr_act(), NULL); */
+  /* lv_img_set_src(bg_clock_img, &bg_clock); */
+  /* lv_obj_align(bg_clock_img, NULL, LV_ALIGN_CENTER, 0, 0); */
 
   mooncover = lv_bar_create(lv_scr_act(), NULL);
   lv_obj_set_size(mooncover, 43, 43);
