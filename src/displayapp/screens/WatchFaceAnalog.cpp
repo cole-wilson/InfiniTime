@@ -161,7 +161,7 @@ WatchFaceAnalog::WatchFaceAnalog(Pinetime::Applications::DisplayApp* app,
   lv_arc_set_value(timer, 360);
 
   timer_label = lv_label_create(lv_scr_act(), NULL);
-  lv_label_set_text(timer_label, "--:--");
+  lv_label_set_text(timer_label, "");
   lv_label_set_align(timer_label, LV_LABEL_ALIGN_CENTER);
   lv_obj_align(timer_label, NULL, LV_ALIGN_IN_TOP_LEFT, 7, 7);
 
@@ -181,7 +181,7 @@ WatchFaceAnalog::WatchFaceAnalog(Pinetime::Applications::DisplayApp* app,
   // info label
   info_label = lv_label_create(lv_scr_act(), NULL);
   lv_label_set_recolor(info_label, true);
-  lv_label_set_text(info_label, "#0000FF Now Playing#\nCharlie Thorne\n--");
+  lv_label_set_text(info_label, "#665577 PineTime#");
   lv_label_set_align(info_label, LV_LABEL_ALIGN_CENTER);
   lv_obj_align(info_label, NULL, LV_ALIGN_CENTER, 0, 50);
 
