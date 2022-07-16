@@ -77,7 +77,7 @@ void Row::Refresh() {
 		x += (5*(-60 - z));
 	else if (z > -60 && x > 0)
 		x -= (5*(-60 - z));
-	if (abs(x / 0x10) > 30)
+	if (abs(x) > 30)
 		motorController.RunForDuration(15);
 	/* for (int i=1;i<3;i++) { */
 	/* 	motiondata[i-1] = motiondata[i]; */
