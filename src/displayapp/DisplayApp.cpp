@@ -480,7 +480,7 @@ void DisplayApp::LoadApp(Apps app, DisplayApp::FullRefreshDirections direction) 
 	  ReturnApp(Apps::Clock, FullRefreshDirections::RightAnim, TouchEvents::SwipeRight);
       break;
 	case Apps::Row:
-	  currentScreen = std::make_unique<Screens::Row>(this, batteryController, dateTimeController, motorController, brightnessController, timerController, motionController, fs);
+	  currentScreen = std::make_unique<Screens::Row>(this, batteryController, dateTimeController, motorController, brightnessController, timerController, motionController, fs, systemTask);
 	  break;
 	case Apps::Timeline:
 	  currentScreen = std::make_unique<Screens::Timeline>(this, motorController, dateTimeController, fs);

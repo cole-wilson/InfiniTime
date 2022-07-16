@@ -23,7 +23,8 @@ namespace Pinetime {
 				Controllers::BrightnessController& brightnessController,
 				Controllers::TimerController& timerController,
 				Controllers::MotionController& motionController,
-				Controllers::FS& fs);
+				Controllers::FS& fs,
+				System::SystemTask& systemTask);
         ~Row() override;
 		void Refresh() override;
 		void OnButtonEvent(lv_obj_t* obj, lv_event_t event);
@@ -46,6 +47,7 @@ namespace Pinetime {
 		Controllers::TimerController& timerController;
 		Controllers::MotionController& motionController;
 		Controllers::FS& fs;
+		System::SystemTask& systemTask;
       };
     }
   }
