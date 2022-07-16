@@ -46,7 +46,7 @@ Row::Row(DisplayApp* app,
 
 	timer = lv_label_create(lv_scr_act(), NULL);
     lv_obj_add_style(timer, LV_OBJ_PART_MAIN, &style);
-	/* lv_obj_set_style_local_text_font(timer, LV_LABEL_PART_MAIN, LV_STATE_DEFAULT, &jetbrains_mono_extrabold_compressed); */
+	lv_obj_set_style_local_text_font(timer, LV_LABEL_PART_MAIN, LV_STATE_DEFAULT, &jetbrains_mono_extrabold_compressed);
 	lv_label_set_text(timer, "06:27");
 	lv_label_set_align(timer, LV_LABEL_ALIGN_CENTER);
 	lv_obj_align(timer, NULL, LV_ALIGN_IN_BOTTOM_MID, 0, -5);
