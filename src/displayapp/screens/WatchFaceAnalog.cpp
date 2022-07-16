@@ -143,7 +143,7 @@ WatchFaceAnalog::WatchFaceAnalog(Pinetime::Applications::DisplayApp* app,
   lv_arc_set_angles(steps, 0, 360);
   lv_arc_set_rotation(steps, 270);
   lv_obj_align(steps, NULL, LV_ALIGN_CENTER, 0, 0);
-  lv_arc_set_value(steps, 290);  
+  lv_arc_set_value(steps, 360);  
 
   // timer
   timer = lv_arc_create(lv_scr_act(), NULL);
@@ -158,12 +158,12 @@ WatchFaceAnalog::WatchFaceAnalog(Pinetime::Applications::DisplayApp* app,
   lv_arc_set_angles(timer, 0, 360);
   lv_arc_set_rotation(timer, 270);
   lv_obj_align(timer, NULL, LV_ALIGN_CENTER, 0, 0);
-  lv_arc_set_value(timer, 200);
+  lv_arc_set_value(timer, 360);
 
   timer_label = lv_label_create(lv_scr_act(), NULL);
-  lv_label_set_text(timer_label, "34:18");
+  lv_label_set_text(timer_label, "--:--");
   lv_label_set_align(timer_label, LV_LABEL_ALIGN_CENTER);
-  lv_obj_align(timer_label, timer, LV_ALIGN_IN_TOP_LEFT, 7, 7);
+  lv_obj_align(timer_label, NULL, LV_ALIGN_IN_TOP_LEFT, 7, 7);
 
 
   // heart

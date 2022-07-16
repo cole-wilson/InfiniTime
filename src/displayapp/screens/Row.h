@@ -35,6 +35,14 @@ namespace Pinetime {
 				Controllers::MotionController& motionController,
 				Controllers::FS& fs);
         ~Row() override;
+
+		Controllers::Battery& batteryController;
+		Controllers::DateTime& dateTimeController;
+		Controllers::MotorController& motorController;
+		Controllers::BrightnessController& brightnessController;
+		Controllers::TimerController& timerController;
+		Controllers::MotionController& motionController;
+		Controllers::FS& fs;
       };
     }
   }
