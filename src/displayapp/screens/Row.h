@@ -27,6 +27,10 @@ namespace Pinetime {
         ~Row() override;
 		void Refresh() override;
 		void OnButtonEvent(lv_obj_t* obj, lv_event_t event);
+		bool OnButtonPushed() override;
+		bool OnButtonDoubleClicked() override;
+		bool OnButtonLongPressed() override;
+		bool OnButtonLongerPressed() override;
 
 		lv_task_t* taskRefresh;
 

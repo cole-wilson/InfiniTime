@@ -77,8 +77,7 @@ void Row::OnButtonEvent(lv_obj_t* obj, lv_event_t event) {
 	/* } */
   /* } */
 }
-
-bool Row::OnButtonPressed() {return true;}
+bool Row::OnButtonPushed() {return true;}
 bool Row::OnButtonDoubleClicked() {return true;}
 bool Row::OnButtonLongPressed() {return true;}
 bool Row::OnButtonLongerPressed() {return true;}
