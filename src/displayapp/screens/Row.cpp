@@ -77,14 +77,14 @@ void Row::Refresh() {
 		x += (5*(-60 - z));
 	else if (z > -60 && x > 0)
 		x -= (5*(-60 - z));
-	if (abs(x) > 30)
+	if (abs(x) > 50)
 		motorController.RunForDuration(15);
 	/* for (int i=1;i<3;i++) { */
 	/* 	motiondata[i-1] = motiondata[i]; */
 	/* } */
 	/* motiondata[3-1] = motionController.X(); */
 	/* if (abs(motiondata[1]) > 20) { */
-	/* 	lv_label_set_text_fmt(strokecount, "%d, %d, %d", motiondata[0], motiondata[1], motiondata[2]); */
+		lv_label_set_text_fmt(strokecount, "%d, %d, %d", x, z, 5*(-60-z));
 	/* 	if (motiondata[1] > motiondata[0] && motiondata[1] > motiondata[2]) */
 	/* 		motorController.RunForDuration(30); */
 	/* 	if (motiondata[1] < motiondata[0] && motiondata[1] < motiondata[2]) */
