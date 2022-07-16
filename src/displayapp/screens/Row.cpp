@@ -40,7 +40,7 @@ Row::Row(DisplayApp* app,
 
 	strokerate = lv_label_create(lv_scr_act(), NULL);
     lv_obj_add_style(strokerate, LV_OBJ_PART_MAIN, &style);
-	lv_obj_set_style_local_text_font(strokerate, LV_LABEL_PART_MAIN, LV_STATE_DEFAULT, &jetbrains_mono_extrabold_compressed);
+	/* lv_obj_set_style_local_text_font(strokerate, LV_LABEL_PART_MAIN, LV_STATE_DEFAULT, &jetbrains_mono_extrabold_compressed); */
 	lv_label_set_text(strokerate, "28");
 	lv_label_set_align(strokerate, LV_LABEL_ALIGN_CENTER);
 	lv_obj_align(strokerate, NULL, LV_ALIGN_IN_TOP_LEFT, 0, 30);
