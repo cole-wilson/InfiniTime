@@ -26,6 +26,7 @@ namespace Pinetime {
 				Controllers::FS& fs);
         ~Row() override;
 		void Refresh() override;
+		void OnButtonEvent(lv_obj_t* obj, lv_event_t event);
 
 		lv_task_t* taskRefresh;
 

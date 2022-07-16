@@ -78,10 +78,10 @@ void Row::OnButtonEvent(lv_obj_t* obj, lv_event_t event) {
   /* } */
 }
 
-void Row::OnButtonPressed() {return true;}
-void Row::OnButtonDoubleClicked() {return true;}
-void Row::OnButtonLongPressed() {return true;}
-void Row::OnButtonLongerPressed() {return true;}
+bool Row::OnButtonPressed() {return true;}
+bool Row::OnButtonDoubleClicked() {return true;}
+bool Row::OnButtonLongPressed() {return true;}
+bool Row::OnButtonLongerPressed() {return true;}
 
 Row::~Row() {
   lv_task_del(taskRefresh);
