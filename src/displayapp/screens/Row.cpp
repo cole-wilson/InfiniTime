@@ -71,7 +71,13 @@ void Row::Refresh() {
 		uint32_t seconds = timerController.GetTimeRemaining() / 1000;
 		lv_label_set_text_fmt(timer, "%.2d:%.2d", seconds/60, seconds%60);
 	}
-	if (abs(motionController.Y() / 0x10) > 30)
+	int x = motionController.X() / 0x10;
+	int z = motionController.Z() / 0x10;
+	if (z > -60 && x < 0)
+		x += (5*(-60 - z));
+	else if (z > -60 && x > 0)
+		x -= (5*(-60 - z));
+	if (abs(x / 0x10) > 30)
 		motorController.RunForDuration(15);
 	/* for (int i=1;i<3;i++) { */
 	/* 	motiondata[i-1] = motiondata[i]; */
