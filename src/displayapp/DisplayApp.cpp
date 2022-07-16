@@ -257,30 +257,36 @@ void DisplayApp::Refresh() {
         }
         break;
       case Messages::ButtonLongPressed:
-		PushMessageToSystemTask(System::Messages::GoToSleep);
-        LoadApp(Apps::Clock, DisplayApp::FullRefreshDirections::None);
-        /* if (currentApp != Apps::Clock) { */
-        /*   if (currentApp == Apps::Notifications) { */
-        /*     LoadApp(Apps::Clock, DisplayApp::FullRefreshDirections::Up); */
-        /*   } else if (currentApp == Apps::QuickSettings) { */
-        /*     LoadApp(Apps::Clock, DisplayApp::FullRefreshDirections::LeftAnim); */
-        /*   } else { */
-        /*     LoadApp(Apps::Clock, DisplayApp::FullRefreshDirections::Down); */
-        /*   } */
-        /* } */
+		if (!currentScreen->OnButtonLongPressed()) {
+			PushMessageToSystemTask(System::Messages::GoToSleep);
+			LoadApp(Apps::Clock, DisplayApp::FullRefreshDirections::None);
+			/* if (currentApp != Apps::Clock) { */
+			/*   if (currentApp == Apps::Notifications) { */
+			/*     LoadApp(Apps::Clock, DisplayApp::FullRefreshDirections::Up); */
+			/*   } else if (currentApp == Apps::QuickSettings) { */
+			/*     LoadApp(Apps::Clock, DisplayApp::FullRefreshDirections::LeftAnim); */
+			/*   } else { */
+			/*     LoadApp(Apps::Clock, DisplayApp::FullRefreshDirections::Down); */
+			/*   } */
+			/* } */
+		}
         break;
       case Messages::ButtonLongerPressed:
         // Create reboot app and open it instead
-        LoadApp(Apps::SysInfo, DisplayApp::FullRefreshDirections::Down);
+		if (!currentScreen->OnButtonLongerPressed()) { 
+			LoadApp(Apps::SysInfo, DisplayApp::FullRefreshDirections::Down);
+		}
         break;
       case Messages::ButtonDoubleClicked:
-		if (currentApp == Apps::Clock) {
-			LoadApp(Apps::Launcher, DisplayApp::FullRefreshDirections::Up);
-		} else {
-			LoadApp(Apps::Clock, DisplayApp::FullRefreshDirections::None);
+		if (!currentScreen->OnButtonDoubleClicked()) {
+			if (currentApp == Apps::Clock) {
+				LoadApp(Apps::Launcher, DisplayApp::FullRefreshDirections::Up);
+			} else {
+				LoadApp(Apps::Clock, DisplayApp::FullRefreshDirections::None);
+			}
+			/* if (currentApp != Apps::Notifications && currentApp != Apps::NotificationsPreview) { */
+			/* } */
 		}
-        /* if (currentApp != Apps::Notifications && currentApp != Apps::NotificationsPreview) { */
-        /* } */
         break;
 
       case Messages::BleFirmwareUpdateStarted:

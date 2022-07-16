@@ -58,6 +58,9 @@ namespace Pinetime {
         virtual bool OnButtonPushed() {
           return false;
         }
+		virtual bool OnButtonDoubleClicked() { return false; }
+		virtual bool OnButtonLongPressed() { return false; }
+		virtual bool OnButtonLongerPressed() { return false; }
 
         /** @return false if the event hasn't been handled by the app, true if it has been handled */
         // Returning true will cancel lvgl tap

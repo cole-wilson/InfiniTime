@@ -35,6 +35,14 @@ namespace Pinetime {
 				Controllers::MotionController& motionController,
 				Controllers::FS& fs);
         ~Row() override;
+		void Refresh() override;
+
+		lv_task_t* taskRefresh;
+
+		lv_obj_t* timeofday;
+		lv_obj_t* timer;
+		lv_obj_t* strokerate;
+		lv_obj_t* strokecount;
 
 		Controllers::Battery& batteryController;
 		Controllers::DateTime& dateTimeController;
