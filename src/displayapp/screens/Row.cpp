@@ -23,6 +23,8 @@ Row::Row(DisplayApp* app,
 {
 	//system.PushMessage(Pinetime::System::Messages::DisableSleeping);
 
+    timerController.StartTimer((1 + 13 * 60) * 1000);
+
 	static lv_style_t style;
     lv_style_init(&style);
     lv_style_set_border_width(&style, LV_STATE_DEFAULT, 2);
@@ -63,10 +65,13 @@ Row::Row(DisplayApp* app,
 
 }
 
-void Timer::Refresh() {
-
+void Row::Refresh() {
+	if (timerController.IsRunning()) {
+		uint32_t seconds = timerController.GetTimeRemaining() / 1000;
+		lv_label_set_text_fmt(timer, "%.2d:%.2d", seconds/60, seconds%60);
+	}
 }
-void Timer::OnButtonEvent(lv_obj_t* obj, lv_event_t event) {
+void Row::OnButtonEvent(lv_obj_t* obj, lv_event_t event) {
   /* if (event == LV_EVENT_CLICKED) { */
     /* if (obj == btnPlayPause) { */
 	/* } */

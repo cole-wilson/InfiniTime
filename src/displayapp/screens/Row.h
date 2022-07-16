@@ -1,14 +1,4 @@
 #pragma once
-//	  currentScreen = std::make_unique<Screens::Row>(this, batteryController, dateTimeController, motorController, brightnessController, timerController, motionController, fs);
-/*
- *DisplayApp* app,
-                        Controllers::DateTime& dateTimeController,
-                        Controllers::Battery& batteryController,
-                        Controllers::Ble& bleController,
-                        Controllers::NotificationManager& notificationManager,
-                        Controllers::Settings& settingsController,
-						Controllers::TimerController& timerController
- * */
 
 #include "displayapp/screens/Screen.h"
 #include "systemtask/SystemTask.h"
