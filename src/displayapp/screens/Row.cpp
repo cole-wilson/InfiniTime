@@ -56,7 +56,7 @@ Row::Row(DisplayApp* app,
     lv_obj_add_style(strokecount, LV_OBJ_PART_MAIN, &style);
 	lv_label_set_text(strokecount, "220");
 	lv_label_set_align(strokecount, LV_LABEL_ALIGN_CENTER);
-	lv_obj_align(strokecount, NULL, LV_ALIGN_IN_RIGHT_MID, -10, -10);
+	lv_obj_align(strokecount, NULL, LV_ALIGN_IN_LEFT_MID, -10, -10);
 
 	/* lv_obj_t* bg_clock_img = lv_img_create(lv_scr_act(), NULL); */
 	/* lv_img_set_src(bg_clock_img, &bg_clock); */
@@ -75,7 +75,13 @@ void Row::Refresh() {
 		motiondata[i-1] = motiondata[i];
 	}
 	motiondata[3-1] = motionController.X();
-	lv_label_set_text_fmt(strokecount, "%d, %d, %d", motiondata[0], motiondata[1], motiondata[2]);
+	if (abs(motiondata[1]) > 20) {
+		lv_label_set_text_fmt(strokecount, "%d, %d, %d", motiondata[0], motiondata[1], motiondata[2]);
+		if (motiondata[1] > motiondata[0] && motiondata[1] > motiondata[2])
+			motorController.RunForDuration(30);
+		if (motiondata[1] < motiondata[0] && motiondata[1] < motiondata[2])
+			motorController.RunForDuration(30);
+	}
 }
 void Row::OnButtonEvent(lv_obj_t* obj, lv_event_t event) {
   /* if (event == LV_EVENT_CLICKED) { */
