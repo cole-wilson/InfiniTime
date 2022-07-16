@@ -22,7 +22,7 @@ Row::Row(DisplayApp* app,
 	fs {fs},
 	systemTask {systemTask}
 {
-	systemTask.PushMessage(Pinetime::System::Messages::DisableSleeping);
+	/* systemTask.PushMessage(Pinetime::System::Messages::DisableSleeping); */
 
     timerController.StartTimer((1 + 13 * 60) * 1000);
 
@@ -87,5 +87,5 @@ Row::~Row() {
   lv_task_del(taskRefresh);
   lv_obj_clean(lv_scr_act());
   lv_obj_set_style_local_bg_color(lv_scr_act(), LV_OBJ_PART_MAIN, LV_STATE_DEFAULT, lv_color_hex(0x000000));
-  systemTask.PushMessage(Pinetime::System::Messages::EnableSleeping);
+  /* systemTask.PushMessage(Pinetime::System::Messages::EnableSleeping); */
 }
