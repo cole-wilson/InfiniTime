@@ -74,17 +74,17 @@ void Row::Refresh() {
 	int x = motionController.X() / 0x10;
 	int z = motionController.Z() / 0x10;
 	if (z > -60 && x < 0)
-		x += (5*(-60 - z));
+		x += (10*(-60 - z));
 	else if (z > -60 && x > 0)
-		x -= (5*(-60 - z));
+		x -= (10*(-60 - z));
 	if (abs(x) > 50)
-		motorController.RunForDuration(15);
+		motorController.RunForDuration(9);
 	/* for (int i=1;i<3;i++) { */
 	/* 	motiondata[i-1] = motiondata[i]; */
 	/* } */
 	/* motiondata[3-1] = motionController.X(); */
 	/* if (abs(motiondata[1]) > 20) { */
-		lv_label_set_text_fmt(strokecount, "%d, %d, %d", x, z, 5*(-60-z));
+	lv_label_set_text_fmt(strokecount, "%d, %d, %d", x, z, 10*(-60-z));
 	/* 	if (motiondata[1] > motiondata[0] && motiondata[1] > motiondata[2]) */
 	/* 		motorController.RunForDuration(30); */
 	/* 	if (motiondata[1] < motiondata[0] && motiondata[1] < motiondata[2]) */

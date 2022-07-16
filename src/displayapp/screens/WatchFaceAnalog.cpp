@@ -131,59 +131,59 @@ WatchFaceAnalog::WatchFaceAnalog(Pinetime::Applications::DisplayApp* app,
   lv_obj_align(notificationIcon, NULL, LV_ALIGN_IN_TOP_LEFT, 0, 0);
 
   // steps
-  steps = lv_arc_create(lv_scr_act(), NULL);
-  lv_obj_set_style_local_line_color(steps, LV_ARC_PART_INDIC, LV_STATE_DEFAULT, lv_color_hex(0x264d8c));
-  lv_obj_set_style_local_line_width(steps, LV_ARC_PART_INDIC, LV_STATE_DEFAULT, 7);
-  lv_obj_set_style_local_line_color(steps, LV_OBJ_PART_MAIN,  LV_STATE_DEFAULT, lv_color_hex(0x000000));
-  lv_obj_set_style_local_line_width(steps, LV_OBJ_PART_MAIN, LV_STATE_DEFAULT, 7);
-  lv_obj_set_size(steps, 205, 205);
+  /* steps = lv_arc_create(lv_scr_act(), NULL); */
+  /* lv_obj_set_style_local_line_color(steps, LV_ARC_PART_INDIC, LV_STATE_DEFAULT, lv_color_hex(0x264d8c)); */
+  /* lv_obj_set_style_local_line_width(steps, LV_ARC_PART_INDIC, LV_STATE_DEFAULT, 7); */
+  /* lv_obj_set_style_local_line_color(steps, LV_OBJ_PART_MAIN,  LV_STATE_DEFAULT, lv_color_hex(0x000000)); */
+  /* lv_obj_set_style_local_line_width(steps, LV_OBJ_PART_MAIN, LV_STATE_DEFAULT, 7); */
+  /* lv_obj_set_size(steps, 205, 205); */
 
-  lv_arc_set_range(steps, 0, 360);
-  lv_arc_set_bg_angles(steps, 0, 360);
-  lv_arc_set_angles(steps, 0, 360);
-  lv_arc_set_rotation(steps, 270);
-  lv_obj_align(steps, NULL, LV_ALIGN_CENTER, 0, 0);
-  lv_arc_set_value(steps, 360);  
+  /* lv_arc_set_range(steps, 0, 360); */
+  /* lv_arc_set_bg_angles(steps, 0, 360); */
+  /* lv_arc_set_angles(steps, 0, 360); */
+  /* lv_arc_set_rotation(steps, 270); */
+  /* lv_obj_align(steps, NULL, LV_ALIGN_CENTER, 0, 0); */
+  /* lv_arc_set_value(steps, 360); */  
 
   // timer
-  timer = lv_arc_create(lv_scr_act(), NULL);
-  lv_obj_set_style_local_line_color(timer, LV_OBJ_PART_MAIN,  LV_STATE_DEFAULT, lv_color_hex(0x000000));
-  lv_obj_set_style_local_line_width(timer, LV_ARC_PART_INDIC, LV_STATE_DEFAULT, 7);
-  lv_obj_set_style_local_line_color(timer, LV_ARC_PART_INDIC,  LV_STATE_DEFAULT, lv_color_hex(0xff9d00));
-  lv_obj_set_style_local_line_width(timer, LV_OBJ_PART_MAIN, LV_STATE_DEFAULT, 7);
-  lv_obj_set_size(timer, 190, 190);
+  /* timer = lv_arc_create(lv_scr_act(), NULL); */
+  /* lv_obj_set_style_local_line_color(timer, LV_OBJ_PART_MAIN,  LV_STATE_DEFAULT, lv_color_hex(0x000000)); */
+  /* lv_obj_set_style_local_line_width(timer, LV_ARC_PART_INDIC, LV_STATE_DEFAULT, 7); */
+  /* lv_obj_set_style_local_line_color(timer, LV_ARC_PART_INDIC,  LV_STATE_DEFAULT, lv_color_hex(0xff9d00)); */
+  /* lv_obj_set_style_local_line_width(timer, LV_OBJ_PART_MAIN, LV_STATE_DEFAULT, 7); */
+  /* lv_obj_set_size(timer, 190, 190); */
 
-  lv_arc_set_range(timer, 0, 360);
-  lv_arc_set_bg_angles(timer, 0, 360);
-  lv_arc_set_angles(timer, 0, 360);
-  lv_arc_set_rotation(timer, 270);
-  lv_obj_align(timer, NULL, LV_ALIGN_CENTER, 0, 0);
-  lv_arc_set_value(timer, 360);
+  /* lv_arc_set_range(timer, 0, 360); */
+  /* lv_arc_set_bg_angles(timer, 0, 360); */
+  /* lv_arc_set_angles(timer, 0, 360); */
+  /* lv_arc_set_rotation(timer, 270); */
+  /* lv_obj_align(timer, NULL, LV_ALIGN_CENTER, 0, 0); */
+  /* lv_arc_set_value(timer, 360); */
 
-  timer_label = lv_label_create(lv_scr_act(), NULL);
-  lv_label_set_text(timer_label, "");
-  lv_label_set_align(timer_label, LV_LABEL_ALIGN_CENTER);
-  lv_obj_align(timer_label, NULL, LV_ALIGN_IN_TOP_LEFT, 7, 7);
+  /* timer_label = lv_label_create(lv_scr_act(), NULL); */
+  /* lv_label_set_text(timer_label, ""); */
+  /* lv_label_set_align(timer_label, LV_LABEL_ALIGN_CENTER); */
+  /* lv_obj_align(timer_label, NULL, LV_ALIGN_IN_TOP_LEFT, 7, 7); */
 
 
-  // heart
-  heart_label = lv_label_create(lv_scr_act(), NULL);
-  lv_label_set_text(heart_label, "134");
-  lv_label_set_align(heart_label, LV_LABEL_ALIGN_LEFT);
-  lv_obj_align(heart_label, NULL, LV_ALIGN_IN_BOTTOM_LEFT, 7, -7);
+  /* // heart */
+  /* heart_label = lv_label_create(lv_scr_act(), NULL); */
+  /* lv_label_set_text(heart_label, "134"); */
+  /* lv_label_set_align(heart_label, LV_LABEL_ALIGN_LEFT); */
+  /* lv_obj_align(heart_label, NULL, LV_ALIGN_IN_BOTTOM_LEFT, 7, -7); */
 
-  // stroke rate
-  stroke_label = lv_label_create(lv_scr_act(), NULL);
-  lv_label_set_text(stroke_label, "28");
-  lv_label_set_align(stroke_label, LV_LABEL_ALIGN_RIGHT);
-  lv_obj_align(stroke_label, NULL, LV_ALIGN_IN_BOTTOM_RIGHT, -7, -7);
+  /* // stroke rate */
+  /* stroke_label = lv_label_create(lv_scr_act(), NULL); */
+  /* lv_label_set_text(stroke_label, "28"); */
+  /* lv_label_set_align(stroke_label, LV_LABEL_ALIGN_RIGHT); */
+  /* lv_obj_align(stroke_label, NULL, LV_ALIGN_IN_BOTTOM_RIGHT, -7, -7); */
 
-  // info label
-  info_label = lv_label_create(lv_scr_act(), NULL);
-  lv_label_set_recolor(info_label, true);
-  lv_label_set_text(info_label, "#665577 PineTime#");
-  lv_label_set_align(info_label, LV_LABEL_ALIGN_CENTER);
-  lv_obj_align(info_label, NULL, LV_ALIGN_CENTER, 0, 50);
+  /* // info label */
+  /* info_label = lv_label_create(lv_scr_act(), NULL); */
+  /* lv_label_set_recolor(info_label, true); */
+  /* lv_label_set_text(info_label, "#665577 PineTime#"); */
+  /* lv_label_set_align(info_label, LV_LABEL_ALIGN_CENTER); */
+  /* lv_obj_align(info_label, NULL, LV_ALIGN_CENTER, 0, 50); */
 
 
 
