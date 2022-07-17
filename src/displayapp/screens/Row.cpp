@@ -1,6 +1,8 @@
 #include "displayapp/screens/Row.h"
 #include "displayapp/DisplayApp.h"
 #include <lvgl/lvgl.h>
+#include <components/heartrate/HeartRateController.h>
+
 
 using namespace Pinetime::Applications::Screens;
 
