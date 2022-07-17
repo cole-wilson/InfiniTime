@@ -223,13 +223,13 @@ void DisplayApp::Refresh() {
           if (currentApp == Apps::Clock) {
             switch (gesture) {
               case TouchEvents::SwipeUp:
-                LoadApp(Apps::QuickSettings, DisplayApp::FullRefreshDirections::Up);
+                /* LoadApp(Apps::QuickSettings, DisplayApp::FullRefreshDirections::Up); */
                 break;
               case TouchEvents::SwipeDown:
                 LoadApp(Apps::Notifications, DisplayApp::FullRefreshDirections::Down);
                 break;
               case TouchEvents::SwipeRight:
-                /* LoadApp(Apps::QuickSettings, DisplayApp::FullRefreshDirections::RightAnim); */
+                LoadApp(Apps::QuickSettings, DisplayApp::FullRefreshDirections::RightAnim);
                 break;
 			  case TouchEvents::SwipeLeft:
 				/* LoadApp(Apps::Calendar, DisplayApp::FullRefreshDirections::LeftAnim); */
