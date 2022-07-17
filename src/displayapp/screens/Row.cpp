@@ -91,18 +91,18 @@ void Row::Refresh() {
 
 	// strokes
 	int16_t avg = motiondata[0];
-	for (int i=1;i<100;i++) {
+	for (int i=1;i<1000;i++) {
 		avg += motiondata[i];
 		motiondata[i-1] = motiondata[i];
 	}
-	motiondata[99] = motionController.X() / 0x10;
-	avg /= 100;
+	motiondata[999] = motionController.X() / 0x10;
+	avg /= 1000;
 
-	lv_label_set_text_fmt(strokecount, "  %d, %d, %d", avg, motiondata[99], abs(motiondata[99] - avg));
+	lv_label_set_text_fmt(strokecount, "  %d, %d, %d", avg, motiondata[999], abs(motiondata[999] - avg));
 
-	if (abs(motiondata[99] - avg) > 20) {
+	if (abs(motiondata[999] - avg) > 20) {
 		motorController.RunForDuration(15);
-		motiondata[99] = avg;
+		/* motiondata[99] = avg; */
 	}
 
 
