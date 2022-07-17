@@ -43,7 +43,7 @@ namespace Pinetime {
 		lv_obj_t* strokecount;
 		lv_obj_t* heartrate;
 		
-		int motiondata[10];
+		int motiondata[100];
 
 		Controllers::Battery& batteryController;
 		Controllers::DateTime& dateTimeController;

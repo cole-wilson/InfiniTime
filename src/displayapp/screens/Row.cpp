@@ -90,18 +90,21 @@ void Row::Refresh() {
 	}
 
 	// strokes
-	int avg = motiondata[0];
-	for (int i=1;i<10;i++) {
+	int16_t avg = motiondata[0];
+	for (int i=1;i<100;i++) {
 		avg += motiondata[i];
 		motiondata[i-1] = motiondata[i];
 	}
-	motiondata[9] = motionController.X() / 0x10;
-	avg /= 10;
+	motiondata[99] = motionController.X() / 0x10;
+	avg /= 100;
 
-	if (abs(motiondata[9] - avg) > 10)
+	lv_label_set_text_fmt(strokecount, "  %d, %d, %d", avg, motiondata[99], abs(motiondata[99] - avg));
+
+	if (abs(motiondata[99] - avg) > 20) {
 		motorController.RunForDuration(15);
+		motiondata[99] = avg;
+	}
 
-	lv_label_set_text_fmt(strokecount, "  %03d, %03d, %03d", avg, motiondata[9], abs(motiondata[9] - avg));
 
 	// heartrate
 	auto state = heartRateController.State();
