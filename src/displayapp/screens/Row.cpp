@@ -99,7 +99,7 @@ void Row::Refresh() {
 	if (abs(motiondata[9] - avg) > 10)
 		motorController.RunForDuration(15);
 
-	lv_label_set_text_fmt(strokecount, "  %03d, %03d, %03d", avg, motiondata[9], abs(motiondata[9] - avg);
+	lv_label_set_text_fmt(strokecount, "  %03d, %03d, %03d", avg, motiondata[9], abs(motiondata[9] - avg));
 
 	// heartrate
 	auto state = heartRateController.State();
