@@ -14,7 +14,7 @@ Row::Row(DisplayApp* app,
 				Controllers::MotionController& motionController,
 				Controllers::FS& fs,
 				System::SystemTask* systemTask,
-				Controllers::HeartRateController)
+				Controllers::HeartRateController heartRateController)
 	: Screen(app),
     batteryController {batteryController},
     dateTimeController {dateTimeController},
