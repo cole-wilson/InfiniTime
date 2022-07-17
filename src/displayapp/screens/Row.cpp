@@ -58,10 +58,10 @@ Row::Row(DisplayApp* app,
 
 	strokecount = lv_label_create(lv_scr_act(), NULL);
     lv_obj_add_style(strokecount, LV_OBJ_PART_MAIN, &style);
-	lv_obj_set_style_local_text_font(strokecount, LV_LABEL_PART_MAIN, LV_STATE_DEFAULT, &jetbrains_mono_42);
-	lv_label_set_text(strokecount, "220");
+	/* lv_obj_set_style_local_text_font(strokecount, LV_LABEL_PART_MAIN, LV_STATE_DEFAULT, &jetbrains_mono_42); */
+	lv_label_set_text(strokecount, "");
 	lv_label_set_align(strokecount, LV_LABEL_ALIGN_CENTER);
-	lv_obj_align(strokecount, NULL, LV_ALIGN_IN_LEFT_MID, -10, -10);
+	lv_obj_align(strokecount, NULL, LV_ALIGN_IN_LEFT_MID, 10, 10);
 
 	if (heartRateController.State() == Controllers::HeartRateController::States::Stopped)
 		heartRateController.Start();
@@ -98,7 +98,7 @@ void Row::Refresh() {
 	motiondata[999] = motionController.X() / 0x10;
 	avg /= 1000;
 
-	lv_label_set_text_fmt(strokecount, "  %d, %d, %d", avg, motiondata[999], abs(motiondata[999] - avg));
+	lv_label_set_text_fmt(strokecount, " %d %d %d", avg, motiondata[999], abs(motiondata[999] - avg));
 
 	if (abs(motiondata[999] - avg) > 20) {
 		motorController.RunForDuration(15);
