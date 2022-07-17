@@ -8,6 +8,7 @@
 #include "components/motor/MotorController.h"
 #include "components/brightness/BrightnessController.h"
 #include "components/timer/TimerController.h"
+#include <components/heartrate/HeartRateController.h>
 #include "components/motion/MotionController.h"
 #include "components/fs/FS.h"
 
@@ -24,7 +25,8 @@ namespace Pinetime {
 				Controllers::TimerController& timerController,
 				Controllers::MotionController& motionController,
 				Controllers::FS& fs,
-				System::SystemTask* systemTask);
+				System::SystemTask* systemTask,
+				Controllers::HeartRateController& heartRateController);
         ~Row() override;
 		void Refresh() override;
 		void OnButtonEvent(lv_obj_t* obj, lv_event_t event);
@@ -51,6 +53,7 @@ namespace Pinetime {
 		Controllers::MotionController& motionController;
 		Controllers::FS& fs;
 		System::SystemTask* systemTask;
+		Controllers::HeartRateController& heartRateController;
       };
     }
   }

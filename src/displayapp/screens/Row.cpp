@@ -1,7 +1,6 @@
 #include "displayapp/screens/Row.h"
 #include "displayapp/DisplayApp.h"
 #include <lvgl/lvgl.h>
-#include <components/heartrate/HeartRateController.h>
 
 
 using namespace Pinetime::Applications::Screens;
@@ -13,7 +12,9 @@ Row::Row(DisplayApp* app,
 				Controllers::BrightnessController& brightnessController,
 				Controllers::TimerController& timerController,
 				Controllers::MotionController& motionController,
-				Controllers::FS& fs,System::SystemTask* systemTask)
+				Controllers::FS& fs,
+				System::SystemTask* systemTask,
+				Controllers::HeartRateController)
 	: Screen(app),
     batteryController {batteryController},
     dateTimeController {dateTimeController},
@@ -22,7 +23,8 @@ Row::Row(DisplayApp* app,
 	timerController {timerController},
 	motionController {motionController},
 	fs {fs},
-	systemTask {systemTask}
+	systemTask {systemTask},
+	heartRateController {heartRateController}
 {
 	/* systemTask.PushMessage(Pinetime::System::Messages::DisableSleeping); */
 
