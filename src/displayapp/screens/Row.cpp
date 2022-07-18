@@ -1,6 +1,9 @@
 #include "displayapp/screens/Row.h"
 #include "displayapp/DisplayApp.h"
 #include <lvgl/lvgl.h>
+#include <vector>
+#include <numeric>
+
 
 
 using namespace Pinetime::Applications::Screens;
@@ -81,6 +84,68 @@ Row::Row(DisplayApp* app,
 	taskRefresh = lv_task_create(RefreshTaskCallback, LV_DISP_DEF_REFR_PERIOD, LV_TASK_PRIO_MID, this);
 
 }
+float mean(std::vector<float> v) {
+	float sum = std::accumulate(v.begin(), v.end(), 0.0);
+	return sum / v.size();
+}
+float stdDev(std::vector<float> v) {
+	float gmean = mean(v);
+	float sq_sum = std::inner_product(v.begin(), v.end(), v.begin(), 0.0);
+	float stdev = std::sqrt(sq_sum / v.size() - gmean * gmean);
+	return stdev;
+}
+std::vector<int> smoothedZScore(int arr[], int n)
+{   
+	std::vector<int> input(arr, arr + n);
+
+    int lag = 5; //lag 5 for the smoothing functions
+    //3.5 standard deviations for signal
+    float threshold = 3.5;
+    //between 0 and 1, where 1 is normal influence, 0.5 is half
+    float influence = .5;
+
+    if (input.size() <= lag + 2)
+    {
+        std::vector<int> emptyVec;
+        return emptyVec;
+    }
+
+    //Initialise variables
+    std::vector<int> signals(input.size(), 0.0);
+    std::vector<float> filteredY(input.size(), 0.0);
+    std::vector<float> avgFilter(input.size(), 0.0);
+    std::vector<float> stdFilter(input.size(), 0.0);
+    std::vector<float> subVecStart(input.begin(), input.begin() + lag);
+    avgFilter[lag] = mean(subVecStart);
+    stdFilter[lag] = stdDev(subVecStart);
+
+    for (size_t i = lag + 1; i < input.size(); i++)
+    {
+        if (std::abs(input[i] - avgFilter[i - 1]) > threshold * stdFilter[i - 1])
+        {
+            if (input[i] > avgFilter[i - 1])
+            {
+                signals[i] = 1; //# Positive signal
+            }
+            else
+            {
+                signals[i] = -1; //# Negative signal
+            }
+            //Make influence lower
+            filteredY[i] = influence* input[i] + (1 - influence) * filteredY[i - 1];
+        }
+        else
+        {
+            signals[i] = 0; //# No signal
+            filteredY[i] = input[i];
+        }
+        //Adjust the filters
+        std::vector<float> subVec(filteredY.begin() + i - lag, filteredY.begin() + i);
+        avgFilter[i] = mean(subVec);
+        stdFilter[i] = stdDev(subVec);
+    }
+    return signals;
+}
 
 void Row::Refresh() {
 	// timer
@@ -90,20 +155,22 @@ void Row::Refresh() {
 	}
 
 	// strokes
-	int16_t avg = motiondata[0];
-	for (int i=1;i<1000;i++) {
-		avg += motiondata[i];
-		motiondata[i-1] = motiondata[i];
+	int motiondatalen = sizeof(motiondata)/sizeof(motiondata[0]);
+	for (int i=1;i<motiondatalen;i++) motiondata[i-1] = motiondata[i];
+	motiondata[motiondatalen-1] = motionController.X();
+	
+	std::vector<int> signals = smoothedZScore(motiondata, motiondatalen);
+	int count = 0;
+	for (int x=0;x<signals.size();x++) {
+		if (signals[x] == 1) count++;
 	}
-	motiondata[999] = motionController.X() / 0x10;
-	avg /= 1000;
 
-	lv_label_set_text_fmt(strokecount, " %d %d %d", avg, motiondata[999], abs(motiondata[999] - avg));
+	lv_label_set_text_fmt(strokecount, " %d", count);
 
-	if (abs(motiondata[999] - avg) > 20) {
-		motorController.RunForDuration(15);
+	/* if (abs(motiondata[999] - avg) > 20) { */
+		/* motorController.RunForDuration(15); */
 		/* motiondata[99] = avg; */
-	}
+	/* } */
 
 
 	// heartrate
