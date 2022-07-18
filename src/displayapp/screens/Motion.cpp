@@ -15,7 +15,7 @@ Motion::Motion(Pinetime::Applications::DisplayApp* app, Controllers::MotionContr
 
   lv_chart_set_range(chart, -1100, 1100);
   lv_chart_set_update_mode(chart, LV_CHART_UPDATE_MODE_SHIFT);
-  lv_chart_set_point_count(chart, 64);
+  lv_chart_set_point_count(chart, 128);
 
   /*Add 3 data series*/
   ser1 = lv_chart_add_series(chart, LV_COLOR_RED);
