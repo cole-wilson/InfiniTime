@@ -57,6 +57,7 @@ Row::Row(DisplayApp* app,
 	lv_obj_set_style_local_text_font(timer, LV_LABEL_PART_MAIN, LV_STATE_DEFAULT, &jetbrains_mono_extrabold_compressed);
 	lv_label_set_text(timer, "06:27");
 	lv_label_set_align(timer, LV_LABEL_ALIGN_CENTER);
+	lv_obj_set_height(timer, 110);
 	lv_obj_align(timer, NULL, LV_ALIGN_IN_BOTTOM_MID, 0, 4);
 
 	strokecount = lv_label_create(lv_scr_act(), NULL);
@@ -81,7 +82,7 @@ Row::Row(DisplayApp* app,
 	/* lv_img_set_src(bg_clock_img, &bg_clock); */
 	/* lv_obj_align(bg_clock_img, NULL, LV_ALIGN_CENTER, 0, 0); */
 
-	taskRefresh = lv_task_create(RefreshTaskCallback, 100, LV_TASK_PRIO_MID, this);
+	taskRefresh = lv_task_create(RefreshTaskCallback, 1000, LV_TASK_PRIO_MID, this);
 
 }
 float mean(std::vector<float> v) {
@@ -165,7 +166,7 @@ void Row::Refresh() {
 		if (signals[x] == 1) count++;
 	}
 
-	lv_label_set_text_fmt(strokecount, " %d", count);
+	lv_label_set_text_fmt(strokerate, "%d", count*3);
 
 	/* if (abs(motiondata[999] - avg) > 20) { */
 		/* motorController.RunForDuration(15); */
