@@ -45,7 +45,7 @@ namespace Pinetime {
 		lv_obj_t* chart;
 		lv_chart_series_t* ser1;
 		
-		int motiondata[10];
+		int motiondata[32];
 
 		Controllers::Battery& batteryController;
 		Controllers::DateTime& dateTimeController;

@@ -86,6 +86,8 @@ Row::Row(DisplayApp* app,
     lv_obj_set_size(chart, 240, 240);
     lv_obj_align(chart, NULL, LV_ALIGN_CENTER, 0, 0);
 	lv_chart_set_y_range(chart, LV_CHART_AXIS_PRIMARY_Y, -1, 1);
+	lv_chart_set_update_mode(chart, LV_CHART_UPDATE_MODE_SHIFT);
+	lv_chart_set_point_count(chart, 32);
 	ser1 = lv_chart_add_series(chart, LV_COLOR_RED);
 
 }
