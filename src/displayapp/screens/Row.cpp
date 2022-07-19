@@ -46,38 +46,38 @@ Row::Row(DisplayApp* app,
 	/* lv_obj_align(timeofday, NULL, LV_ALIGN_IN_TOP_LEFT, 10, 10); */
 
 	strokerate = lv_label_create(lv_scr_act(), NULL);
+	lv_obj_set_size(strokerate, 120, 90);
     lv_obj_add_style(strokerate, LV_OBJ_PART_MAIN, &style);
 	lv_obj_set_style_local_text_font(strokerate, LV_LABEL_PART_MAIN, LV_STATE_DEFAULT, &jetbrains_mono_extrabold_compressed);
 	lv_label_set_text(strokerate, "28");
 	lv_label_set_align(strokerate, LV_LABEL_ALIGN_CENTER);
-	lv_obj_set_size(strokerate, 120, 90);
 	lv_obj_align(strokerate, NULL, LV_ALIGN_IN_TOP_LEFT, 0, 40);
 
 	timer = lv_label_create(lv_scr_act(), NULL);
+	lv_obj_set_size(timer, 240, 110);
     lv_obj_add_style(timer, LV_OBJ_PART_MAIN, &style);
 	lv_obj_set_style_local_text_font(timer, LV_LABEL_PART_MAIN, LV_STATE_DEFAULT, &jetbrains_mono_extrabold_compressed);
 	lv_label_set_text(timer, "06:27");
 	lv_label_set_align(timer, LV_LABEL_ALIGN_CENTER);
-	lv_obj_set_size(timer, 240, 110);
 	lv_obj_align(timer, NULL, LV_ALIGN_IN_BOTTOM_MID, 0, 0);
 
 	strokecount = lv_label_create(lv_scr_act(), NULL);
+	lv_obj_set_size(strokerate, 120, 40);
     lv_obj_add_style(strokecount, LV_OBJ_PART_MAIN, &style);
 	lv_obj_set_style_local_text_font(strokecount, LV_LABEL_PART_MAIN, LV_STATE_DEFAULT, &jetbrains_mono_42);
 	lv_label_set_text(strokecount, "225");
 	lv_label_set_align(strokecount, LV_LABEL_ALIGN_CENTER);
-	lv_obj_set_size(strokerate, 120, 40);
 	lv_obj_align(strokecount, NULL, LV_ALIGN_IN_TOP_LEFT, 0, 0);
 
 	if (heartRateController.State() == Controllers::HeartRateController::States::Stopped)
 		heartRateController.Start();
 
 	heartrate = lv_label_create(lv_scr_act(), NULL);
+	lv_obj_set_size(strokerate, 120, 40);
 	lv_obj_add_style(heartrate, LV_OBJ_PART_MAIN, &style);
 	lv_obj_set_style_local_text_font(heartrate, LV_LABEL_PART_MAIN, LV_STATE_DEFAULT, &jetbrains_mono_42);
 	lv_label_set_text(heartrate, "---");
 	lv_label_set_align(heartrate, LV_LABEL_ALIGN_CENTER);
-	lv_obj_set_size(strokerate, 120, 40);
 	lv_obj_align(heartrate, NULL, LV_ALIGN_IN_TOP_LEFT, 120, 90);
 
 	taskRefresh = lv_task_create(RefreshTaskCallback, LV_DISP_DEF_REFR_PERIOD, LV_TASK_PRIO_MID, this);
@@ -85,6 +85,7 @@ Row::Row(DisplayApp* app,
     chart = lv_chart_create(lv_scr_act(), NULL);
     lv_obj_set_size(chart, 240, 240);
     lv_obj_align(chart, NULL, LV_ALIGN_CENTER, 0, 0);
+	lv_chart_set_y_range(chart, LV_CHART_AXIS_PRIMARY_Y, -1, 1);
 	ser1 = lv_chart_add_series(chart, LV_COLOR_RED);
 
 }
