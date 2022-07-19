@@ -94,7 +94,7 @@ float stdDev(std::vector<float> v) {
 	float stdev = std::sqrt(sq_sum / v.size() - gmean * gmean);
 	return stdev;
 }
-std::vector<int> smoothedZScore(int arr[], int n)
+std::vector<int16_t> smoothedZScore(int arr[], int n)
 {   
 	std::vector<int> input(arr, arr + n);
 
@@ -111,7 +111,7 @@ std::vector<int> smoothedZScore(int arr[], int n)
     }
 
     //Initialise variables
-    std::vector<int> signals(input.size(), 0.0);
+    std::vector<int16_t> signals(input.size(), 0.0);
     std::vector<float> filteredY(input.size(), 0.0);
     std::vector<float> avgFilter(input.size(), 0.0);
     std::vector<float> stdFilter(input.size(), 0.0);
