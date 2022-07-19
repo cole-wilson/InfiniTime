@@ -81,7 +81,7 @@ Row::Row(DisplayApp* app,
 	/* lv_img_set_src(bg_clock_img, &bg_clock); */
 	/* lv_obj_align(bg_clock_img, NULL, LV_ALIGN_CENTER, 0, 0); */
 
-	taskRefresh = lv_task_create(RefreshTaskCallback, LV_DISP_DEF_REFR_PERIOD, LV_TASK_PRIO_MID, this);
+	taskRefresh = lv_task_create(RefreshTaskCallback, 100, LV_TASK_PRIO_MID, this);
 
 }
 float mean(std::vector<float> v) {
