@@ -64,7 +64,7 @@ Row::Row(DisplayApp* app,
 	strokecount = lv_label_create(lv_scr_act(), NULL);
     lv_obj_add_style(strokecount, LV_OBJ_PART_MAIN, &style);
 	lv_obj_set_style_local_text_font(strokecount, LV_LABEL_PART_MAIN, LV_STATE_DEFAULT, &jetbrains_mono_42);
-	lv_label_set_text(strokecount, "");
+	lv_label_set_text(strokecount, "225");
 	lv_label_set_align(strokecount, LV_LABEL_ALIGN_CENTER);
 	lv_obj_set_size(strokerate, 120, 40);
 	lv_obj_align(strokecount, NULL, LV_ALIGN_IN_TOP_LEFT, 0, 0);
@@ -80,7 +80,12 @@ Row::Row(DisplayApp* app,
 	lv_obj_set_size(strokerate, 120, 40);
 	lv_obj_align(heartrate, NULL, LV_ALIGN_IN_TOP_LEFT, 120, 90);
 
-	taskRefresh = lv_task_create(RefreshTaskCallback, 1000, LV_TASK_PRIO_MID, this);
+	taskRefresh = lv_task_create(RefreshTaskCallback, LV_DISP_DEF_REFR_PERIOD, LV_TASK_PRIO_MID, this);
+
+    chart = lv_chart_create(lv_scr_act(), NULL);
+    lv_obj_set_size(chart, 240, 240);
+    lv_obj_align(chart, NULL, LV_ALIGN_CENTER, 0, 0);
+	ser1 = lv_chart_add_series(chart, LV_COLOR_RED);
 
 }
 float mean(std::vector<float> v) {
@@ -161,6 +166,7 @@ void Row::Refresh() {
 	std::vector<int> signals = smoothedZScore(motiondata, motiondatalen);
 	int count = 0;
 	for (int x=0;x<signals.size();x++) {
+		lv_chart_set_next(chart, ser1, signals[x]);
 		if (signals[x] == 1) count++;
 	}
 
