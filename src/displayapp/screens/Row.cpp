@@ -94,7 +94,7 @@ float stdDev(std::vector<float> v) {
 	float stdev = std::sqrt(sq_sum / v.size() - gmean * gmean);
 	return stdev;
 }
-std::vector<int16_t> smoothedZScore(int arr[], int n)
+std::vector<int> smoothedZScore(int arr[], int n)
 {   
 	std::vector<int> input(arr, arr + n);
 
@@ -106,12 +106,12 @@ std::vector<int16_t> smoothedZScore(int arr[], int n)
 
     if (input.size() <= lag + 2)
     {
-        std::vector<int16_t> emptyVec;
+        std::vector<int> emptyVec;
         return emptyVec;
     }
 
     //Initialise variables
-    std::vector<int16_t> signals(input.size(), 0.0);
+    std::vector<int> signals(input.size(), 0.0);
     std::vector<float> filteredY(input.size(), 0.0);
     std::vector<float> avgFilter(input.size(), 0.0);
     std::vector<float> stdFilter(input.size(), 0.0);
@@ -159,7 +159,7 @@ void Row::Refresh() {
 	for (int i=1;i<motiondatalen;i++) motiondata[i-1] = motiondata[i];
 	motiondata[motiondatalen-1] = motionController.X();
 	
-	std::vector<int16_t> signals = smoothedZScore(motiondata, motiondatalen);
+	std::vector<int> signals = smoothedZScore(motiondata, motiondatalen);
 	int count = 0;
 	for (int x=0;x<signals.size();x++) {
 		if (signals[x] == 1) count++;
