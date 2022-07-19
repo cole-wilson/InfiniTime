@@ -106,7 +106,7 @@ std::vector<int16_t> smoothedZScore(int arr[], int n)
 
     if (input.size() <= lag + 2)
     {
-        std::vector<int> emptyVec;
+        std::vector<int16_t> emptyVec;
         return emptyVec;
     }
 
@@ -159,7 +159,7 @@ void Row::Refresh() {
 	for (int i=1;i<motiondatalen;i++) motiondata[i-1] = motiondata[i];
 	motiondata[motiondatalen-1] = motionController.X();
 	
-	std::vector<int> signals = smoothedZScore(motiondata, motiondatalen);
+	std::vector<int16_t> signals = smoothedZScore(motiondata, motiondatalen);
 	int count = 0;
 	for (int x=0;x<signals.size();x++) {
 		if (signals[x] == 1) count++;
