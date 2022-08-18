@@ -226,14 +226,14 @@ void DisplayApp::Refresh() {
                 /* LoadApp(Apps::QuickSettings, DisplayApp::FullRefreshDirections::Up); */
                 break;
               case TouchEvents::SwipeDown:
-                LoadApp(Apps::Notifications, DisplayApp::FullRefreshDirections::Down);
+//                 LoadApp(Apps::Notifications, DisplayApp::FullRefreshDirections::Down);
                 break;
               case TouchEvents::SwipeRight:
-                LoadApp(Apps::QuickSettings, DisplayApp::FullRefreshDirections::RightAnim);
+//                 LoadApp(Apps::QuickSettings, DisplayApp::FullRefreshDirections::RightAnim);
                 break;
-			  case TouchEvents::SwipeLeft:
-				/* LoadApp(Apps::Calendar, DisplayApp::FullRefreshDirections::LeftAnim); */
-				break;
+	  case TouchEvents::SwipeLeft:
+		/* LoadApp(Apps::Calendar, DisplayApp::FullRefreshDirections::LeftAnim); */
+		break;
               case TouchEvents::DoubleTap:
                 PushMessageToSystemTask(System::Messages::GoToSleep);
                 break;
