@@ -31,14 +31,14 @@ Schedule::Schedule(DisplayApp* app, Controllers::DateTime& dateTimeController): 
 	lv_label_set_text(classtime, "1:35-2:25");
 	lv_label_set_align(classtime, LV_LABEL_ALIGN_CENTER);
 	lv_obj_set_width(classtime, lv_page_get_width_fit(page));
-	lv_label_set_long_mode(classtime, LV_LABEL_LONG_SCROLL_CIRC);
+	lv_label_set_long_mode(classtime, LV_LABEL_LONG_SROLL_CIRC);
 	offset += 45;
 
 
 	timeleft = lv_label_create(page, NULL);
 	lv_label_set_text(timeleft, "#808080" "2 MINUTES LEFT" "#");
 	lv_obj_set_width(timeleft, lv_page_get_width_fit(page));
-	lv_label_set_long_mode(timeleft, LV_LABEL_LONG_SCROLL_CIRC);
+	lv_label_set_long_mode(timeleft, LV_LABEL_LONG_SROLL_CIRC);
 	lv_obj_align(timeleft, NULL, LV_ALIGN_IN_TOP_MID, 0, offset);
 	lv_label_set_recolor(timeleft, true);
 	offset += 21;
@@ -54,7 +54,7 @@ Schedule::Schedule(DisplayApp* app, Controllers::DateTime& dateTimeController): 
 	);
 	lv_label_set_align(classes, LV_LABEL_ALIGN_LEFT);
 	lv_obj_set_width(classes, lv_page_get_width_fit(page));
-	lv_label_set_long_mode(classes, LV_LABEL_LONG_SCROLL_CIRC);
+	lv_label_set_long_mode(classes, LV_LABEL_LONG_SROLL_CIRC);
 	lv_obj_align(classes, NULL, LV_ALIGN_IN_TOP_MID, 0, offset);
 	lv_label_set_recolor(classes, true);
 	offset += 100;
@@ -68,8 +68,8 @@ Schedule::Schedule(DisplayApp* app, Controllers::DateTime& dateTimeController): 
 void Schedule::Refresh() {
 
 }
-void Schedule::OnButtonEvent(lv_obj_t* obj, lv_event_t event) {
-}
+/* void Schedule::OnButtonEvent(lv_obj_t* obj, lv_event_t event) { */
+/* } */
 
 Schedule::~Schedule() {
   lv_task_del(taskRefresh);
