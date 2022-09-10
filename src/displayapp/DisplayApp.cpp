@@ -23,6 +23,7 @@
 #include "displayapp/screens/Timeline.h"
 #include "displayapp/screens/Calendar.h"
 #include "displayapp/screens/Row.h"
+#include "displayapp/screens/Schedule.h"
 #include "displayapp/screens/Navigation.h"
 #include "displayapp/screens/Notifications.h"
 #include "displayapp/screens/SystemInfo.h"
@@ -231,8 +232,10 @@ void DisplayApp::Refresh() {
               case TouchEvents::SwipeRight:
 //                 LoadApp(Apps::QuickSettings, DisplayApp::FullRefreshDirections::RightAnim);
                 break;
-	  case TouchEvents::SwipeLeft:
-		/* LoadApp(Apps::Calendar, DisplayApp::FullRefreshDirections::LeftAnim); */
+			  case TouchEvents::SwipeLeft:
+					LoadApp(Apps::Schedule, DisplayApp::FullRefreshDirections::LeftAnim);
+					ReturnApp(Apps::Clock, FullRefreshDirections::RightAnim, TouchEvents::SwipeRight);
+					break
 		break;
               case TouchEvents::DoubleTap:
                 PushMessageToSystemTask(System::Messages::GoToSleep);
@@ -273,7 +276,7 @@ void DisplayApp::Refresh() {
         break;
       case Messages::ButtonLongerPressed:
         // Create reboot app and open it instead
-		if (!currentScreen->OnButtonLongerPressed()) { 
+		if (!currentScreen->OnButtonLongerPressed()) {
 			LoadApp(Apps::SysInfo, DisplayApp::FullRefreshDirections::Down);
 		}
         break;
@@ -482,6 +485,9 @@ void DisplayApp::LoadApp(Apps app, DisplayApp::FullRefreshDirections direction) 
 	case Apps::Row:
 	  currentScreen = std::make_unique<Screens::Row>(this, batteryController, dateTimeController, motorController, brightnessController, timerController, motionController, fs, systemTask, heartRateController);
 	  break;
+	case Apps:Schedule:
+		currentScreen = std::make_unique<Screens::Schedule>(this, dateTimeController)
+		break
 	case Apps::Timeline:
 	  currentScreen = std::make_unique<Screens::Timeline>(this, motorController, dateTimeController, fs);
 	  ReturnApp(Apps::Calendar, FullRefreshDirections::Left, TouchEvents::SwipeRight);

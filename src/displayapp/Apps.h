@@ -18,6 +18,7 @@ namespace Pinetime {
       Music,
       Calendar,
 	  Row,
+	  Schedule,
 	  Timeline,
       Paint,
       Paddle,
