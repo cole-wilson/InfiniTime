@@ -55,7 +55,8 @@ namespace Pinetime {
 		  {"dce", Apps::Dice},
 		  {"wko", Apps::Workout},
 		{Symbols::notificationsOn, Apps::Notifications},
-		{Symbols::settings, Apps::Settings}
+		{Symbols::settings, Apps::Settings},
+{"sch",Apps::Schedule}
           
         }};
         ScreenList<nScreens> screens;
