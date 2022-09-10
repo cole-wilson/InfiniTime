@@ -43,21 +43,21 @@ Schedule::Schedule(DisplayApp* app, Controllers::DateTime& dateTimeController): 
 	lv_label_set_recolor(timeleft, true);
 	offset += 21;
 
-	classes = lv_label_create(lv_scr_act(), NULL);
-	lv_label_set_text(classes,
-			(std::string("#808080 " P1 "#") + std::string(10-strlen(P1)-3, '-') + std::string("603" "#\n")
-			+std::string("#808080 " P2 "#") + std::string(10-strlen(P2)-3, '-') + std::string("603" "#\n")
-			+std::string("#808080 " P3 "#") + std::string(10-strlen(P3)-3, '-') + std::string("603" "#\n")
-			+std::string("#808080 " P4 "#") + std::string(10-strlen(P4)-3, '-') + std::string("603" "#\n")
-			+std::string("#00FFE7 " P5 "#") + std::string(10-strlen(P5)-3, '-') + std::string("603" "#\n")
-			+std::string("#FFFFFF " P6 "#") + std::string(10-strlen(P6)-3, '-') + std::string("603" "#\n")).c_str()
-	);
-	lv_label_set_align(classes, LV_LABEL_ALIGN_LEFT);
-	lv_obj_set_width(classes, lv_page_get_width_fit(page));
-	lv_label_set_long_mode(classes, LV_LABEL_LONG_SROLL_CIRC);
-	lv_obj_align(classes, NULL, LV_ALIGN_IN_TOP_MID, 0, offset);
-	lv_label_set_recolor(classes, true);
-	offset += 100;
+	//classes = lv_label_create(lv_scr_act(), NULL);
+	//lv_label_set_text(classes,
+	//		(std::string("#808080 " P1 "#") + std::string(10-strlen(P1)-3, '-') + std::string("603" "#\n")
+	//		+std::string("#808080 " P2 "#") + std::string(10-strlen(P2)-3, '-') + std::string("603" "#\n")
+		//	+std::string("#808080 " P3 "#") + std::string(10-strlen(P3)-3, '-') + std::string("603" "#\n")
+		//	+std::string("#808080 " P4 "#") + std::string(10-strlen(P4)-3, '-') + std::string("603" "#\n")
+		//	+std::string("#00FFE7 " P5 "#") + std::string(10-strlen(P5)-3, '-') + std::string("603" "#\n")
+		//	+std::string("#FFFFFF " P6 "#") + std::string(10-strlen(P6)-3, '-') + std::string("603" "#\n")).c_str()
+	//);
+	//lv_label_set_align(classes, LV_LABEL_ALIGN_LEFT);
+	//lv_obj_set_width(classes, lv_page_get_width_fit(page));
+	//lv_label_set_long_mode(classes, LV_LABEL_LONG_SROLL_CIRC);
+	//lv_obj_align(classes, NULL, LV_ALIGN_IN_TOP_MID, 0, offset);
+	//lv_label_set_recolor(classes, true);
+	//offset += 100;
 
 	//mapimg = lv_img_create(page, NULL);
     //lv_img_set_src(mapimg, &map);
