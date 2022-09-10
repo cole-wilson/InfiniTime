@@ -485,7 +485,7 @@ void DisplayApp::LoadApp(Apps app, DisplayApp::FullRefreshDirections direction) 
 	case Apps::Row:
 	  currentScreen = std::make_unique<Screens::Row>(this, batteryController, dateTimeController, motorController, brightnessController, timerController, motionController, fs, systemTask, heartRateController);
 	  break;
-	case Apps:Schedule:
+	case Apps::Schedule:
 		currentScreen = std::make_unique<Screens::Schedule>(this, dateTimeController);
 		break
 	case Apps::Timeline:
