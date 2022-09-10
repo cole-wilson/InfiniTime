@@ -17,7 +17,7 @@
 using namespace Pinetime::Applications::Screens;
 
 Schedule::Schedule(DisplayApp* app, Controllers::DateTime& dateTimeController): Screen(app), dateTimeController {dateTimeController} {
-	taskRefresh = lv_task_create(RefreshTaskCallback, LV_DISP_DEF_REFR_PERIOD, LV_TASK_PRIO_MID, this);
+	//taskRefresh = lv_task_create(RefreshTaskCallback, LV_DISP_DEF_REFR_PERIOD, LV_TASK_PRIO_MID, this);
 
 	//page = lv_page_create(lv_scr_act(), NULL);
 	//lv_obj_set_size(page, 240, 240); // fill screen
@@ -72,6 +72,6 @@ void Schedule::Refresh() {
 /* } */
 
 Schedule::~Schedule() {
-  lv_task_del(taskRefresh);
+  //lv_task_del(taskRefresh);
   lv_obj_clean(lv_scr_act());
 }
