@@ -19,14 +19,14 @@ using namespace Pinetime::Applications::Screens;
 Schedule::Schedule(DisplayApp* app, Controllers::DateTime& dateTimeController): Screen(app), dateTimeController {dateTimeController} {
 	taskRefresh = lv_task_create(RefreshTaskCallback, LV_DISP_DEF_REFR_PERIOD, LV_TASK_PRIO_MID, this);
 
-	page = lv_page_create(lv_scr_act(), NULL);
-	lv_obj_set_size(page, 240, 240); // fill screen
-	lv_obj_align(page, NULL, LV_ALIGN_CENTER, 0, 0);
+	//page = lv_page_create(lv_scr_act(), NULL);
+	//lv_obj_set_size(page, 240, 240); // fill screen
+	//lv_obj_align(page, NULL, LV_ALIGN_CENTER, 0, 0);
 
 	int offset = 0;
 
 
-	classtime = lv_label_create(page, NULL);
+	classtime = lv_label_create(lv_scr_act(), NULL);
 	lv_obj_set_style_local_text_font(classtime, LV_LABEL_PART_MAIN, LV_STATE_DEFAULT, &jetbrains_mono_42);
 	lv_label_set_text(classtime, "1:35-2:25");
 	lv_label_set_align(classtime, LV_LABEL_ALIGN_CENTER);
@@ -35,7 +35,7 @@ Schedule::Schedule(DisplayApp* app, Controllers::DateTime& dateTimeController): 
 	offset += 45;
 
 
-	timeleft = lv_label_create(page, NULL);
+	timeleft = lv_label_create(lv_scr_act(), NULL);
 	lv_label_set_text(timeleft, "#808080" "2 MINUTES LEFT" "#");
 	lv_obj_set_width(timeleft, lv_page_get_width_fit(page));
 	lv_label_set_long_mode(timeleft, LV_LABEL_LONG_SROLL_CIRC);
@@ -43,7 +43,7 @@ Schedule::Schedule(DisplayApp* app, Controllers::DateTime& dateTimeController): 
 	lv_label_set_recolor(timeleft, true);
 	offset += 21;
 
-	classes = lv_label_create(page, NULL);
+	classes = lv_label_create(lv_scr_act(), NULL);
 	lv_label_set_text(classes,
 			(std::string("#808080 " P1 "#") + std::string(10-strlen(P1)-3, '-') + std::string("603" "#\n")
 			+std::string("#808080 " P2 "#") + std::string(10-strlen(P2)-3, '-') + std::string("603" "#\n")
