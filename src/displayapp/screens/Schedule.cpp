@@ -36,7 +36,7 @@ Schedule::Schedule(DisplayApp* app, Controllers::DateTime& dateTimeController): 
 
 
 	timeleft = lv_label_create(page, NULL);
-	lv_label_set_text(timeleft, "#808080" + "2 MINUTES LEFT" + "#");
+	lv_label_set_text(timeleft, "#808080" "2 MINUTES LEFT" "#");
 	lv_obj_set_width(timeleft, lv_page_get_width_fit(page));
 	lv_label_set_long_mode(timeleft, LV_LABEL_LONG_SCROLL_CIRC);
 	lv_obj_align(timeleft, NULL, LV_ALIGN_IN_TOP_MID, 0, offset);
@@ -45,12 +45,12 @@ Schedule::Schedule(DisplayApp* app, Controllers::DateTime& dateTimeController): 
 
 	classes = lv_label_create(page, NULL);
 	lv_label_set_text(classes,
-			std::string("#808080 " P1 "#")+ std::string(10-strlen(P1)-3, '-') + std::string("603" "#\n")
-			std::string("#808080 " P2 "#")+ std::string(10-strlen(P2)-3, '-') + std::string("603" "#\n")
-			std::string("#808080 " P3 "#")+ std::string(10-strlen(P3)-3, '-') + std::string("603" "#\n")
-			std::string("#808080 " P4 "#")+ std::string(10-strlen(P4)-3, '-') + std::string("603" "#\n")
-			std::string("#00FFE7 " P5 "#")+ std::string(10-strlen(P5)-3, '-') + std::string("603" "#\n")
-			std::string("#FFFFFF " P6 "#")+ std::string(10-strlen(P6)-3, '-') + std::string("603" "#\n")
+			(std::string("#808080 " P1 "#") + std::string(10-strlen(P1)-3, '-') + std::string("603" "#\n")
+			+std::string("#808080 " P2 "#") + std::string(10-strlen(P2)-3, '-') + std::string("603" "#\n")
+			+std::string("#808080 " P3 "#") + std::string(10-strlen(P3)-3, '-') + std::string("603" "#\n")
+			+std::string("#808080 " P4 "#") + std::string(10-strlen(P4)-3, '-') + std::string("603" "#\n")
+			+std::string("#00FFE7 " P5 "#") + std::string(10-strlen(P5)-3, '-') + std::string("603" "#\n")
+			+std::string("#FFFFFF " P6 "#") + std::string(10-strlen(P6)-3, '-') + std::string("603" "#\n")).c_str()
 	);
 	lv_label_set_align(classes, LV_LABEL_ALIGN_LEFT);
 	lv_obj_set_width(classes, lv_page_get_width_fit(page));
