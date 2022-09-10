@@ -12,7 +12,7 @@
 #define P5 "AP Literature"
 #define P6 "AP Physics"
 
-LV_IMG_DECLARE(map);
+//LV_IMG_DECLARE(map);
 
 using namespace Pinetime::Applications::Screens;
 
@@ -59,8 +59,8 @@ Schedule::Schedule(DisplayApp* app, Controllers::DateTime& dateTimeController): 
 	lv_label_set_recolor(classes, true);
 	offset += 100;
 
-	mapimg = lv_img_create(page, NULL);
-    lv_img_set_src(mapimg, &map);
+	//mapimg = lv_img_create(page, NULL);
+    //lv_img_set_src(mapimg, &map);
 
 
 }
