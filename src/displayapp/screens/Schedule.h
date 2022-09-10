@@ -27,6 +27,7 @@ namespace Pinetime {
 			lv_obj_t* timeleft;
 			lv_obj_t* classes;
 			lv_obj_t* rooms;
+		lv_obj_t* mapimg;
 
 		Controllers::DateTime& dateTimeController;
       };

@@ -12,6 +12,8 @@
 #define P5 "AP Literature"
 #define P6 "AP Physics"
 
+LV_IMG_DECLARE(map);
+
 using namespace Pinetime::Applications::Screens;
 
 Schedule::Schedule(DisplayApp* app, Controllers::DateTime& dateTimeController): Screen(app), dateTimeController {dateTimeController} {
@@ -43,18 +45,24 @@ Schedule::Schedule(DisplayApp* app, Controllers::DateTime& dateTimeController): 
 
 	classes = lv_label_create(page, NULL);
 	lv_label_set_text(classes,
-			"#808080 " + P1 + "#" + std::string(10-std::strlen(P1)-3, '-') + "603" + "#\n"
-			"#808080 " + P2 + "#" + std::string(10-std::strlen(P2)-3, '-') + "603" + "#\n"
-			"#808080 " + P3 + "#" + std::string(10-std::strlen(P3)-3, '-') + "603" + "#\n"
-			"#808080 " + P4 + "#" + std::string(10-std::strlen(P4)-3, '-') + "603" + "#\n"
-			"#00FFE7 " + P5 + "#" + std::string(10-std::strlen(P5)-3, '-') + "603" + "#\n"
-			"#FFFFFF " + P6 + "#" + std::string(10-std::strlen(P6)-3, '-') + "603" + "#\n"
+			"#808080 " + P1 + "#" + std::string(10-strlen(P1)-3, '-') + "603" + "#\n"
+			"#808080 " + P2 + "#" + std::string(10-strlen(P2)-3, '-') + "603" + "#\n"
+			"#808080 " + P3 + "#" + std::string(10-strlen(P3)-3, '-') + "603" + "#\n"
+			"#808080 " + P4 + "#" + std::string(10-strlen(P4)-3, '-') + "603" + "#\n"
+			"#00FFE7 " + P5 + "#" + std::string(10-strlen(P5)-3, '-') + "603" + "#\n"
+			"#FFFFFF " + P6 + "#" + std::string(10-strlen(P6)-3, '-') + "603" + "#\n"
 	);
 	lv_label_set_align(classes, LV_LABEL_ALIGN_LEFT);
 	lv_obj_set_width(classes, lv_page_get_width_fit(page));
 	lv_label_set_long_mode(classes, LV_LABEL_LONG_SCROLL_CIRC);
 	lv_obj_align(classes, NULL, LV_ALIGN_IN_TOP_MID, 0, offset);
 	lv_label_set_recolor(classes, true);
+	offset += 100
+
+	mapimg = lv_img_create(page, NULL);
+    lv_img_set_src(mapimg, &map);
+
+
 }
 
 void Schedule::Refresh() {
