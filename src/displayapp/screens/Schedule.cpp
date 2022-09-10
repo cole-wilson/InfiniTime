@@ -57,7 +57,7 @@ Schedule::Schedule(DisplayApp* app, Controllers::DateTime& dateTimeController): 
 	lv_label_set_long_mode(classes, LV_LABEL_LONG_SCROLL_CIRC);
 	lv_obj_align(classes, NULL, LV_ALIGN_IN_TOP_MID, 0, offset);
 	lv_label_set_recolor(classes, true);
-	offset += 100
+	offset += 100;
 
 	mapimg = lv_img_create(page, NULL);
     lv_img_set_src(mapimg, &map);
